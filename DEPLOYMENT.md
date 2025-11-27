@@ -220,6 +220,10 @@ If you want a custom domain:
 - Check that all dependencies are in `package.json` (not just locally installed)
 - Verify build command works locally: `npm run build`
 - Check Node.js version - Vercel uses Node 18+ by default (you can specify in `package.json`)
+- **Dependency Conflicts**: If you see `ERESOLVE` errors:
+  - The project uses `.npmrc` with `legacy-peer-deps=true` to handle peer dependency conflicts
+  - `@react-three/drei` has been set to version `^9.114.0` (compatible with React 18)
+  - If issues persist, run `npm install` locally first to ensure compatibility
 
 ### Environment Variables Not Working
 
