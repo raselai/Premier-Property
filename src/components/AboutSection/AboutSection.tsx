@@ -398,12 +398,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                     {/* Right Column - Image */}
                     <Box sx={aboutStyles.rightColumn}>
                         <Box sx={aboutStyles.imageContainer}>
-                            {/* @ts-ignore - MUI Box with component="img" type limitation */}
                             <Box
-                                component='img'
-                                src={mainImage}
-                                alt='Premier Housing Architecture'
-                                sx={aboutStyles.image}
+                                {...({
+                                    component: 'img',
+                                    src: mainImage,
+                                    alt: 'Premier Housing Architecture',
+                                    sx: aboutStyles.image,
+                                } as any)}
                             />
 
                             {/* Logo Overlay */}
@@ -467,12 +468,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                     <Box ref={cardsRef} sx={aboutStyles.projectCards}>
                         {projectImages.map((project) => (
                             <Box key={project.id} sx={aboutStyles.projectCard} className='projectCard'>
-                                {/* @ts-ignore - MUI Box with component="img" type limitation */}
                                 <Box
-                                    component='img'
-                                    src={project.image}
-                                    alt={project.title}
-                                    sx={aboutStyles.projectImage}
+                                    {...({
+                                        component: 'img',
+                                        src: project.image,
+                                        alt: project.title,
+                                        sx: aboutStyles.projectImage,
+                                    } as any)}
                                 />
 
                                 {/* Arrow Icon */}

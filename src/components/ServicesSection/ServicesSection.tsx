@@ -318,12 +318,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                             sx={servicesStyles.serviceCard}
                             className={`serviceCard ${service.offset ? 'offset' : ''}`}
                         >
-                            {/* @ts-ignore - MUI Box with component="img" type limitation */}
                             <Box
-                                component='img'
-                                src={service.image}
-                                alt={service.title}
-                                sx={servicesStyles.cardImage}
+                                {...({
+                                    component: 'img',
+                                    src: service.image,
+                                    alt: service.title,
+                                    sx: servicesStyles.cardImage,
+                                } as any)}
                             />
 
                             <Box sx={servicesStyles.cardHeader}>

@@ -373,13 +373,14 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                                 className='projectCard'
                             >
                                 <Box sx={portfolioStyles.cardImageContainer}>
-                                    {/* @ts-ignore - MUI Box with component="img" type limitation */}
                                     <Box
-                                        component='img'
-                                        src={project.image}
-                                        alt={project.title}
-                                        sx={portfolioStyles.cardImage}
-                                        className='cardImage'
+                                        {...({
+                                            component: 'img',
+                                            src: project.image,
+                                            alt: project.title,
+                                            sx: portfolioStyles.cardImage,
+                                            className: 'cardImage',
+                                        } as any)}
                                     />
 
                                     {/* Arrow Button */}

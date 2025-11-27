@@ -125,12 +125,13 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
     return (
         <Card sx={cardStyles.card}>
             <Box sx={cardStyles.media}>
-                {/* @ts-ignore - CardMedia with component="img" doesn't support alt prop in types */}
                 <CardMedia
-                    component='img'
-                    image={image}
-                    alt={title}
-                    sx={{ height: '240px' }}
+                    {...({
+                        component: 'img',
+                        image,
+                        alt: title,
+                        sx: { height: '240px' },
+                    } as any)}
                 />
                 <Chip label={status} sx={cardStyles.statusChip} />
             </Box>
