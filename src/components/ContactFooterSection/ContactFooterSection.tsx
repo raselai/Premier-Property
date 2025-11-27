@@ -176,11 +176,13 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
         fontFamily: 'Gilroy, sans-serif',
         fontSize: { xs: '15vw', md: '18vw' },
         fontWeight: 800,
-        color: '#F0F0F0',
+        color: '#EBEBEB',
         letterSpacing: '-0.02em',
         lineHeight: 1,
         userSelect: 'none',
-        opacity: 0.5,
+        // Gradient mask: bottom invisible, gradually visible toward top
+        maskImage: 'linear-gradient(to top, transparent 0%, transparent 15%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.5) 100%)',
+        WebkitMaskImage: 'linear-gradient(to top, transparent 0%, transparent 15%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.5) 100%)',
     },
     // Footer Section
     footerSection: {
