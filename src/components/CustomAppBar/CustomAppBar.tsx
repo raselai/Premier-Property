@@ -245,7 +245,7 @@ export const CustomAppBar: React.FC = () => {
         window.open(urls[platform], '_blank');
     };
 
-    const renderNavItem = (item: NavigationItem) => {
+    const renderNavItem = (item: NavigationItem): JSX.Element => {
         if (item.submenu) {
             return (
                 <React.Fragment key={item.label}>
@@ -273,7 +273,7 @@ export const CustomAppBar: React.FC = () => {
                         ))}
                     </Menu>
                 </React.Fragment>
-            ) as React.ReactElement;
+            );
         }
         return (
             <Button
@@ -283,17 +283,16 @@ export const CustomAppBar: React.FC = () => {
             >
                 {item.label}
             </Button>
-        ) as React.ReactElement;
+        );
     };
 
-    const navItems: React.ReactNode[] = navigationItems.map((item) => renderNavItem(item));
+    const navItems = navigationItems.map((item) => renderNavItem(item));
 
     return (
         <>
             <AppBar position='fixed' elevation={0} sx={appBarStyles.appBar}>
                 <Toolbar sx={appBarStyles.toolbar}>
                     {/* Logo */}
-                    {/* @ts-ignore - Box component="img" type limitation */}
                     <Box
                         component='img'
                         src='/Logo.jpg'
@@ -303,8 +302,14 @@ export const CustomAppBar: React.FC = () => {
                     />
 
                     {/* Desktop Navigation */}
-                    {/* @ts-ignore */}
-                    <Box sx={appBarStyles.navContainer}>
+                    <Box
+                        // @ts-expect-error - Complex MUI sx type inference issue
+                        sx={{
+                            display: { xs: 'none', lg: 'flex' },
+                            alignItems: 'center',
+                            gap: 1.5,
+                        }}
+                    >
                         {navItems}
                     </Box>
 
