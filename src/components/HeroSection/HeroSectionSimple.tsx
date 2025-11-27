@@ -7,6 +7,9 @@ import React from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
 interface HeroSectionSimpleProps {
     title?: string;
     subtitle?: string;
@@ -158,62 +161,62 @@ export const HeroSectionSimple: React.FC<HeroSectionSimpleProps> = ({
     onButtonClick,
 }) => {
     return (
-        <Box sx={heroStyles.container}>
+        <AnyBox sx={heroStyles.container}>
             {/* PREMIER Watermark - Behind Content */}
-            <Box sx={heroStyles.watermark}>
+            <AnyBox sx={heroStyles.watermark}>
                 <Typography sx={heroStyles.watermarkText}>
                     PREMIER
                 </Typography>
-            </Box>
+            </AnyBox>
 
             {/* Statistics Cards - Bottom Right on Desktop (Outside Container) */}
-            <Box sx={{ ...heroStyles.statsContainer, display: { xs: 'none', md: 'flex' } }}>
+            <AnyBox sx={{ ...heroStyles.statsContainer, display: { xs: 'none', md: 'flex' } }}>
                 {/* Years of Experience Card */}
-                <Box sx={heroStyles.statsCard}>
+                <AnyBox sx={heroStyles.statsCard}>
                     <Typography sx={heroStyles.statsNumber}>25+</Typography>
                     <Typography sx={heroStyles.statsText}>
                         Years of architectural
                         <br />
                         excellence and innovation
                     </Typography>
-                </Box>
+                </AnyBox>
 
                 {/* Projects Completed Card */}
-                <Box sx={heroStyles.statsCard}>
+                <AnyBox sx={heroStyles.statsCard}>
                     <Typography sx={heroStyles.statsNumber}>549</Typography>
                     <Typography sx={heroStyles.statsText}>
                         Projects implemented
                         <br />
                         worldwide with excellence
                     </Typography>
-                </Box>
-            </Box>
+                </AnyBox>
+            </AnyBox>
 
             {/* Main Content - Above Watermark */}
             <Container maxWidth='lg' sx={heroStyles.content}>
-                <Box sx={{ width: '100%' }}>
+                <AnyBox sx={{ width: '100%' }}>
                     {/* Statistics Cards - Mobile Only (Inside Container) */}
-                    <Box sx={{ ...heroStyles.statsContainer, display: { xs: 'flex', md: 'none' } }}>
+                    <AnyBox sx={{ ...heroStyles.statsContainer, display: { xs: 'flex', md: 'none' } }}>
                         {/* Years of Experience Card */}
-                        <Box sx={heroStyles.statsCard}>
+                        <AnyBox sx={heroStyles.statsCard}>
                             <Typography sx={heroStyles.statsNumber}>25+</Typography>
                             <Typography sx={heroStyles.statsText}>
                                 Years of architectural
                                 <br />
                                 excellence and innovation
                             </Typography>
-                        </Box>
+                        </AnyBox>
 
                         {/* Projects Completed Card */}
-                        <Box sx={heroStyles.statsCard}>
+                        <AnyBox sx={heroStyles.statsCard}>
                             <Typography sx={heroStyles.statsNumber}>549</Typography>
                             <Typography sx={heroStyles.statsText}>
                                 Projects implemented
                                 <br />
                                 worldwide with excellence
                             </Typography>
-                        </Box>
-                    </Box>
+                        </AnyBox>
+                    </AnyBox>
 
                     <Typography sx={heroStyles.subtitle}>
                         {subtitle}
@@ -228,9 +231,9 @@ export const HeroSectionSimple: React.FC<HeroSectionSimpleProps> = ({
                             {buttonText}
                         </Button>
                     )}
-                </Box>
+                </AnyBox>
             </Container>
-        </Box>
+        </AnyBox>
     );
 };
 

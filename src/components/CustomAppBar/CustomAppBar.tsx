@@ -212,6 +212,9 @@ const appBarStyles: Record<string, SxProps<Theme>> = {
     },
 };
 
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
 export const CustomAppBar: React.FC = () => {
     const navigate = useNavigate();
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -293,7 +296,7 @@ export const CustomAppBar: React.FC = () => {
             <AppBar position='fixed' elevation={0} sx={appBarStyles.appBar}>
                 <Toolbar sx={appBarStyles.toolbar}>
                     {/* Logo */}
-                    <Box
+                    <AnyBox
                         component='img'
                         src='/Logo.jpg'
                         alt='Premium Property'
@@ -302,8 +305,7 @@ export const CustomAppBar: React.FC = () => {
                     />
 
                     {/* Desktop Navigation */}
-                    <Box
-                        // @ts-expect-error - Complex MUI sx type inference issue
+                    <AnyBox
                         sx={{
                             display: { xs: 'none', lg: 'flex' },
                             alignItems: 'center',
@@ -311,10 +313,10 @@ export const CustomAppBar: React.FC = () => {
                         }}
                     >
                         {navItems}
-                    </Box>
+                    </AnyBox>
 
                     {/* Right Icons */}
-                    <Box sx={appBarStyles.rightIcons}>
+                    <AnyBox sx={appBarStyles.rightIcons}>
                         {/* Social Icons */}
                         <IconButton
                             sx={appBarStyles.socialIcon}
@@ -345,7 +347,7 @@ export const CustomAppBar: React.FC = () => {
                         >
                             {mobileOpen ? <CloseIcon /> : <MenuIcon />}
                         </IconButton>
-                    </Box>
+                    </AnyBox>
                 </Toolbar>
             </AppBar>
 
@@ -358,7 +360,7 @@ export const CustomAppBar: React.FC = () => {
             >
                 <List>
                     {navigationItems.map((item) => (
-                        <Box key={item.label}>
+                        <AnyBox key={item.label}>
                             {item.submenu ? (
                                 <>
                                     <ListItemButton
@@ -394,7 +396,7 @@ export const CustomAppBar: React.FC = () => {
                                     <ListItemText primary={item.label} />
                                 </ListItemButton>
                             )}
-                        </Box>
+                        </AnyBox>
                     ))}
 
                     {/* Mobile Consultation Button */}

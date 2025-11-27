@@ -7,6 +7,9 @@ import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
 interface HeroSectionArchitecturalProps {
     title?: string;
     subtitle?: string;
@@ -144,7 +147,7 @@ const BurjKhalifaBuilding: React.FC<{ delay: number }> = ({ delay }) => {
     }, [delay]);
 
     return (
-        <Box sx={{
+        <AnyBox sx={{
             position: 'relative',
             width: { xs: '45px', sm: '60px', md: '75px', lg: '90px' },
             height: progress ? { xs: '300px', sm: '380px', md: '460px', lg: '520px' } : '0px',
@@ -153,7 +156,7 @@ const BurjKhalifaBuilding: React.FC<{ delay: number }> = ({ delay }) => {
             filter: 'drop-shadow(0 0 15px rgba(212, 175, 55, 0.3))',
         }}>
             {/* Base section */}
-            <Box sx={{
+            <AnyBox sx={{
                 position: 'absolute',
                 bottom: 0,
                 left: '10%',
@@ -172,7 +175,7 @@ const BurjKhalifaBuilding: React.FC<{ delay: number }> = ({ delay }) => {
             }} />
 
             {/* Middle setback section */}
-            <Box sx={{
+            <AnyBox sx={{
                 position: 'absolute',
                 bottom: '30%',
                 left: '15%',
@@ -194,7 +197,7 @@ const BurjKhalifaBuilding: React.FC<{ delay: number }> = ({ delay }) => {
             }} />
 
             {/* Top spire section */}
-            <Box sx={{
+            <AnyBox sx={{
                 position: 'absolute',
                 bottom: '65%',
                 left: '25%',
@@ -213,7 +216,7 @@ const BurjKhalifaBuilding: React.FC<{ delay: number }> = ({ delay }) => {
             }} />
 
             {/* Spire */}
-            <Box sx={{
+            <AnyBox sx={{
                 position: 'absolute',
                 top: 0,
                 left: '50%',
@@ -243,7 +246,7 @@ const BurjKhalifaBuilding: React.FC<{ delay: number }> = ({ delay }) => {
 
             {/* Vertical edge lights */}
             {[0, 100].map((pos, i) => (
-                <Box key={i} sx={{
+                <AnyBox key={i} sx={{
                     position: 'absolute',
                     left: pos === 0 ? 0 : 'auto',
                     right: pos === 100 ? 0 : 'auto',
@@ -254,7 +257,7 @@ const BurjKhalifaBuilding: React.FC<{ delay: number }> = ({ delay }) => {
                     boxShadow: '0 0 10px rgba(212, 175, 55, 0.6)',
                 }} />
             ))}
-        </Box>
+        </AnyBox>
     );
 };
 
@@ -302,15 +305,15 @@ const TwinTowersBuilding: React.FC<{ delay: number }> = ({ delay }) => {
     };
 
     return (
-        <Box sx={{
+        <AnyBox sx={{
             display: 'flex',
             gap: { xs: '6px', sm: '8px', md: '10px', lg: '12px' },
             alignItems: 'flex-end',
             filter: 'drop-shadow(0 0 15px rgba(212, 175, 55, 0.3))',
         }}>
-            <Box sx={towerStyle} />
-            <Box sx={towerStyle} />
-        </Box>
+            <AnyBox sx={towerStyle} />
+            <AnyBox sx={towerStyle} />
+        </AnyBox>
     );
 };
 
@@ -326,7 +329,7 @@ const ShanghaiTowerBuilding: React.FC<{ delay: number }> = ({ delay }) => {
     }, [delay]);
 
     return (
-        <Box sx={{
+        <AnyBox sx={{
             position: 'relative',
             width: { xs: '55px', sm: '70px', md: '85px', lg: '100px' },
             height: progress ? { xs: '320px', sm: '400px', md: '480px', lg: '540px' } : '0px',
@@ -340,7 +343,7 @@ const ShanghaiTowerBuilding: React.FC<{ delay: number }> = ({ delay }) => {
                 const widthFactor = 1 - (segment * 0.12);
 
                 return (
-                    <Box key={segment} sx={{
+                    <AnyBox key={segment} sx={{
                         position: 'absolute',
                         bottom: `${bottomPercent}%`,
                         left: `${(1 - widthFactor) * 50}%`,
@@ -364,7 +367,7 @@ const ShanghaiTowerBuilding: React.FC<{ delay: number }> = ({ delay }) => {
                     }} />
                 );
             })}
-        </Box>
+        </AnyBox>
     );
 };
 
@@ -380,7 +383,7 @@ const EmpireStateBuilding: React.FC<{ delay: number }> = ({ delay }) => {
     }, [delay]);
 
     return (
-        <Box sx={{
+        <AnyBox sx={{
             position: 'relative',
             width: { xs: '58px', sm: '75px', md: '90px', lg: '105px' },
             height: progress ? { xs: '290px', sm: '360px', md: '420px', lg: '480px' } : '0px',
@@ -388,7 +391,7 @@ const EmpireStateBuilding: React.FC<{ delay: number }> = ({ delay }) => {
             filter: 'drop-shadow(0 0 15px rgba(212, 175, 55, 0.3))',
         }}>
             {/* Base - widest */}
-            <Box sx={{
+            <AnyBox sx={{
                 position: 'absolute',
                 bottom: 0,
                 left: 0,
@@ -410,7 +413,7 @@ const EmpireStateBuilding: React.FC<{ delay: number }> = ({ delay }) => {
             }} />
 
             {/* Middle section */}
-            <Box sx={{
+            <AnyBox sx={{
                 position: 'absolute',
                 bottom: '40%',
                 left: '12%',
@@ -432,7 +435,7 @@ const EmpireStateBuilding: React.FC<{ delay: number }> = ({ delay }) => {
             }} />
 
             {/* Top spire */}
-            <Box sx={{
+            <AnyBox sx={{
                 position: 'absolute',
                 bottom: '75%',
                 left: '30%',
@@ -462,7 +465,7 @@ const EmpireStateBuilding: React.FC<{ delay: number }> = ({ delay }) => {
                     filter: 'drop-shadow(0 0 10px rgba(212, 175, 55, 0.5))',
                 },
             }} />
-        </Box>
+        </AnyBox>
     );
 };
 
@@ -473,9 +476,9 @@ export const HeroSectionArchitectural: React.FC<HeroSectionArchitecturalProps> =
     onButtonClick,
 }) => {
     return (
-        <Box sx={heroStyles.container}>
-            <Box sx={heroStyles.scene}>
-                <Box sx={heroStyles.buildingsContainer}>
+        <AnyBox sx={heroStyles.container}>
+            <AnyBox sx={heroStyles.scene}>
+                <AnyBox sx={heroStyles.buildingsContainer}>
                     <TwinTowersBuilding delay={0.1} />
                     <EmpireStateBuilding delay={0.2} />
                     <BurjKhalifaBuilding delay={0.4} />
@@ -486,12 +489,12 @@ export const HeroSectionArchitectural: React.FC<HeroSectionArchitecturalProps> =
                     <ShanghaiTowerBuilding delay={0.25} />
                     <EmpireStateBuilding delay={0.5} />
                     <TwinTowersBuilding delay={0.65} />
-                </Box>
-            </Box>
+                </AnyBox>
+            </AnyBox>
 
-            <Box sx={heroStyles.overlay}>
+            <AnyBox sx={heroStyles.overlay}>
                 <Container maxWidth='lg'>
-                    <Box sx={heroStyles.content}>
+                    <AnyBox sx={heroStyles.content}>
                         <Typography sx={heroStyles.title}>{title}</Typography>
                         <Typography sx={heroStyles.subtitle}>{subtitle}</Typography>
                         {onButtonClick && (
@@ -499,10 +502,10 @@ export const HeroSectionArchitectural: React.FC<HeroSectionArchitecturalProps> =
                                 {buttonText}
                             </Button>
                         )}
-                    </Box>
+                    </AnyBox>
                 </Container>
-            </Box>
-        </Box>
+            </AnyBox>
+        </AnyBox>
     );
 };
 

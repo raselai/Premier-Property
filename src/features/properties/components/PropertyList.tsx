@@ -10,6 +10,9 @@ import { PropertyCard } from '@/components/PropertyCard/PropertyCard';
 import type { PropertyStatus } from '@/types/property';
 import { useNavigate } from '@tanstack/react-router';
 
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
 const listStyles: Record<string, SxProps<Theme>> = {
     container: {
         p: { xs: 2, md: 4 },
@@ -200,18 +203,18 @@ export const PropertyList: React.FC<PropertyListProps> = ({
     );
 
     return (
-        <Box sx={listStyles.container}>
-            <Box sx={listStyles.header}>
+        <AnyBox sx={listStyles.container}>
+            <AnyBox sx={listStyles.header}>
                 <Typography variant='h2' sx={listStyles.title}>
                     {title}
                 </Typography>
                 <Typography variant='subtitle1' sx={listStyles.subtitle}>
                     {subtitle}
                 </Typography>
-            </Box>
+            </AnyBox>
 
             {/* Filters */}
-            <Box sx={listStyles.filters}>
+            <AnyBox sx={listStyles.filters}>
                 <TextField
                     select
                     label='Status'
@@ -242,7 +245,7 @@ export const PropertyList: React.FC<PropertyListProps> = ({
                     sx={listStyles.filterField}
                     placeholder='No limit'
                 />
-            </Box>
+            </AnyBox>
 
             {/* Property Grid */}
             {filteredProperties.length > 0 ? (
@@ -265,7 +268,7 @@ export const PropertyList: React.FC<PropertyListProps> = ({
                     ))}
                 </Grid>
             ) : (
-                <Box sx={listStyles.emptyState}>
+                <AnyBox sx={listStyles.emptyState}>
                     <Typography
                         variant='h5'
                         sx={{
@@ -285,9 +288,9 @@ export const PropertyList: React.FC<PropertyListProps> = ({
                     >
                         Try adjusting your filters
                     </Typography>
-                </Box>
+                </AnyBox>
             )}
-        </Box>
+        </AnyBox>
     );
 };
 

@@ -8,6 +8,9 @@ import { Box, Typography, Button, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
 const portfolioStyles: Record<string, SxProps<Theme>> = {
     section: {
         backgroundColor: '#FAFAFA',
@@ -314,41 +317,41 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
     };
 
     return (
-        <Box sx={portfolioStyles.section}>
+        <AnyBox sx={portfolioStyles.section}>
             <Container maxWidth='xl'>
                 {/* Section Label */}
-                <Box sx={{ textAlign: 'center' }}>
+                <AnyBox sx={{ textAlign: 'center' }}>
                     <Typography sx={portfolioStyles.sectionLabel}>03 - portfolio</Typography>
-                </Box>
+                </AnyBox>
 
                 {/* Heading */}
                 <Typography sx={portfolioStyles.heading}>
-                    <Box component='span' sx={portfolioStyles.headingDark}>
+                    <AnyBox component='span' sx={portfolioStyles.headingDark}>
                         PROJECTS{' '}
-                    </Box>
-                    <Box component='span' sx={portfolioStyles.headingGold}>
+                    </AnyBox>
+                    <AnyBox component='span' sx={portfolioStyles.headingGold}>
                         WHERE MODERN
-                    </Box>
+                    </AnyBox>
                     <br />
-                    <Box component='span' sx={portfolioStyles.headingGold}>
+                    <AnyBox component='span' sx={portfolioStyles.headingGold}>
                         AESTHETICS{' '}
-                    </Box>
-                    <Box component='span' sx={portfolioStyles.headingDark}>
+                    </AnyBox>
+                    <AnyBox component='span' sx={portfolioStyles.headingDark}>
                         MEET FUNCTIONALITY
-                    </Box>
+                    </AnyBox>
                 </Typography>
 
                 {/* Filter Row */}
-                <Box sx={portfolioStyles.filterRow}>
+                <AnyBox sx={portfolioStyles.filterRow}>
                     {/* Carousel Arrows */}
-                    <Box sx={portfolioStyles.arrowsGroup}>
+                    <AnyBox sx={portfolioStyles.arrowsGroup}>
                         <Button sx={portfolioStyles.navButton} onClick={() => scrollCarousel('left')}>
                             ‹
                         </Button>
                         <Button sx={portfolioStyles.navButton} onClick={() => scrollCarousel('right')}>
                             ›
                         </Button>
-                    </Box>
+                    </AnyBox>
 
                     {/* Filter Tabs */}
                     {filters.map((filter) => (
@@ -361,19 +364,19 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                             {filter}
                         </Button>
                     ))}
-                </Box>
+                </AnyBox>
 
                 {/* Project Cards Carousel */}
-                <Box sx={portfolioStyles.carouselContainer}>
-                    <Box ref={cardsRef} sx={portfolioStyles.carouselWrapper}>
+                <AnyBox sx={portfolioStyles.carouselContainer}>
+                    <AnyBox ref={cardsRef} sx={portfolioStyles.carouselWrapper}>
                         {filteredProjects.map((project) => (
-                            <Box
+                            <AnyBox
                                 key={project.id}
                                 sx={portfolioStyles.projectCard}
                                 className='projectCard'
                             >
-                                <Box sx={portfolioStyles.cardImageContainer}>
-                                    <Box
+                                <AnyBox sx={portfolioStyles.cardImageContainer}>
+                                    <AnyBox
                                         {...({
                                             component: 'img',
                                             src: project.image,
@@ -384,9 +387,9 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                                     />
 
                                     {/* Arrow Button */}
-                                    <Box sx={portfolioStyles.cardArrow}>
+                                    <AnyBox sx={portfolioStyles.cardArrow}>
                                         <ArrowOutwardIcon sx={{ fontSize: '18px' }} />
-                                    </Box>
+                                    </AnyBox>
 
                                     {/* Optional Project Label */}
                                     {project.label && (
@@ -394,19 +397,19 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                                             {project.label}
                                         </Typography>
                                     )}
-                                </Box>
+                                </AnyBox>
 
                                 <Typography sx={portfolioStyles.cardTitle}>{project.title}</Typography>
 
                                 <Typography sx={portfolioStyles.cardDescription}>
                                     {project.description}
                                 </Typography>
-                            </Box>
+                            </AnyBox>
                         ))}
-                    </Box>
-                </Box>
+                    </AnyBox>
+                </AnyBox>
             </Container>
-        </Box>
+        </AnyBox>
     );
 };
 

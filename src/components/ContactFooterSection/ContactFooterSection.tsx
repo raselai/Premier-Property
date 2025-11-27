@@ -12,6 +12,9 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import XIcon from '@mui/icons-material/X';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
 const contactFooterStyles: Record<string, SxProps<Theme>> = {
     // Contact Section with Background
     contactSection: {
@@ -308,13 +311,13 @@ export const ContactFooterSection: React.FC = () => {
     return (
         <>
             {/* Contact Section with Background Image */}
-            <Box sx={contactFooterStyles.contactSection}>
-                <Box sx={contactFooterStyles.contactContent}>
+            <AnyBox sx={contactFooterStyles.contactSection}>
+                <AnyBox sx={contactFooterStyles.contactContent}>
                     <Typography sx={contactFooterStyles.sectionLabel}>04 - contacts</Typography>
 
-                    <Box sx={contactFooterStyles.contactGrid}>
+                    <AnyBox sx={contactFooterStyles.contactGrid}>
                         {/* Left Content */}
-                        <Box sx={contactFooterStyles.leftContent}>
+                        <AnyBox sx={contactFooterStyles.leftContent}>
                             <Typography sx={contactFooterStyles.contactHeading}>
                                 LET'S BUILD
                                 <br />
@@ -326,15 +329,15 @@ export const ContactFooterSection: React.FC = () => {
                             </Typography>
 
                             {/* Feature Tags */}
-                            <Box sx={contactFooterStyles.featureTags}>
+                            <AnyBox sx={contactFooterStyles.featureTags}>
                                 <Typography sx={contactFooterStyles.featureTag}>Future</Typography>
                                 <Typography sx={contactFooterStyles.featureTag}>Modern</Typography>
                                 <Typography sx={contactFooterStyles.featureTag}>Elegance</Typography>
-                            </Box>
-                        </Box>
+                            </AnyBox>
+                        </AnyBox>
 
                         {/* Right Content - Contact Form */}
-                        <Box sx={contactFooterStyles.formContainer}>
+                        <AnyBox sx={contactFooterStyles.formContainer}>
                             <TextField
                                 fullWidth
                                 variant='standard'
@@ -366,21 +369,21 @@ export const ContactFooterSection: React.FC = () => {
                                 Send Message
                                 <ArrowOutwardIcon />
                             </Button>
-                        </Box>
-                    </Box>
-                </Box>
-            </Box>
+                        </AnyBox>
+                    </AnyBox>
+                </AnyBox>
+            </AnyBox>
 
             {/* Brand Watermark Section */}
-            <Box sx={contactFooterStyles.brandSection}>
+            <AnyBox sx={contactFooterStyles.brandSection}>
                 <Typography sx={contactFooterStyles.brandText}>PREMIER</Typography>
-            </Box>
+            </AnyBox>
 
             {/* Footer Section */}
-            <Box sx={contactFooterStyles.footerSection}>
-                <Box sx={contactFooterStyles.footerGrid}>
+            <AnyBox sx={contactFooterStyles.footerSection}>
+                <AnyBox sx={contactFooterStyles.footerGrid}>
                     {/* Newsletter Column */}
-                    <Box>
+                    <AnyBox>
                         <Typography sx={contactFooterStyles.newsletterHeading}>
                             BE AMONG THE FIRST TO EXPLORE OUR FUTURE.
                         </Typography>
@@ -394,10 +397,10 @@ export const ContactFooterSection: React.FC = () => {
                                 ),
                             }}
                         />
-                    </Box>
+                    </AnyBox>
 
                     {/* Social Media Column */}
-                    <Box sx={contactFooterStyles.socialIcons}>
+                    <AnyBox sx={contactFooterStyles.socialIcons}>
                         <IconButton sx={contactFooterStyles.socialIcon}>
                             <FacebookOutlinedIcon />
                         </IconButton>
@@ -407,42 +410,42 @@ export const ContactFooterSection: React.FC = () => {
                         <IconButton sx={contactFooterStyles.socialIcon}>
                             <XIcon />
                         </IconButton>
-                    </Box>
+                    </AnyBox>
 
                     {/* Navigation Links Column */}
-                    <Box sx={contactFooterStyles.navLinks}>
+                    <AnyBox sx={contactFooterStyles.navLinks}>
                         <Typography sx={contactFooterStyles.navLink}>Home</Typography>
                         <Typography sx={contactFooterStyles.navLink}>About us</Typography>
                         <Typography sx={contactFooterStyles.navLink}>Services</Typography>
                         <Typography sx={contactFooterStyles.navLink}>Portfolio</Typography>
                         <Typography sx={contactFooterStyles.navLink}>Contacts</Typography>
-                    </Box>
+                    </AnyBox>
 
                     {/* Contact Info Column */}
-                    <Box sx={contactFooterStyles.contactInfo}>
+                    <AnyBox sx={contactFooterStyles.contactInfo}>
                         <Typography sx={contactFooterStyles.contactText}>
                             +880 1234 567 890
                         </Typography>
                         <Typography sx={contactFooterStyles.contactText}>
                             premier@housing.com
                         </Typography>
-                    </Box>
-                </Box>
-            </Box>
+                    </AnyBox>
+                </AnyBox>
+            </AnyBox>
 
             {/* Bottom Bar */}
-            <Box sx={contactFooterStyles.bottomBar}>
-                <Box sx={contactFooterStyles.bottomContent}>
+            <AnyBox sx={contactFooterStyles.bottomBar}>
+                <AnyBox sx={contactFooterStyles.bottomContent}>
                     <Typography sx={contactFooterStyles.copyright}>
                         © 2025 PREMIER. All rights reserved.
                     </Typography>
 
-                    <Box sx={contactFooterStyles.bottomLinks}>
+                    <AnyBox sx={contactFooterStyles.bottomLinks}>
                         <Typography sx={contactFooterStyles.bottomLink}>Privacy Policy</Typography>
                         <Typography sx={contactFooterStyles.bottomLink}>Terms of Use</Typography>
-                    </Box>
-                </Box>
-            </Box>
+                    </AnyBox>
+                </AnyBox>
+            </AnyBox>
         </>
     );
 };

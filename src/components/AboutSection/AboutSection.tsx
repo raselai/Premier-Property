@@ -8,6 +8,9 @@ import { Box, Typography, Button, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
 const aboutStyles: Record<string, SxProps<Theme>> = {
     section: {
         backgroundColor: '#FFFFFF',
@@ -343,26 +346,26 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
     }, []);
 
     return (
-        <Box sx={aboutStyles.section}>
+        <AnyBox sx={aboutStyles.section}>
             <Container maxWidth='xl'>
                 {/* Top Section - Two Columns */}
-                <Box sx={aboutStyles.topSection}>
+                <AnyBox sx={aboutStyles.topSection}>
                     {/* Left Column - Text Content */}
-                    <Box sx={aboutStyles.leftColumn}>
+                    <AnyBox sx={aboutStyles.leftColumn}>
                         <Typography sx={aboutStyles.sectionLabel}>
                             01 - about us
                         </Typography>
 
                         <Typography sx={aboutStyles.heading}>
-                            <Box component='span' sx={aboutStyles.headingDark}>
+                            <AnyBox component='span' sx={aboutStyles.headingDark}>
                                 WHO{' '}
-                            </Box>
-                            <Box component='span' sx={aboutStyles.headingGold}>
+                            </AnyBox>
+                            <AnyBox component='span' sx={aboutStyles.headingGold}>
                                 WE ARE
-                            </Box>
+                            </AnyBox>
                         </Typography>
 
-                        <Box sx={aboutStyles.description}>
+                        <AnyBox sx={aboutStyles.description}>
                             <Typography component='span' sx={aboutStyles.descriptionEmphasis}>
                                 About Premier Housing & Developments Ltd.
                             </Typography>{' '}
@@ -387,18 +390,18 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                             <Typography component='span' sx={aboutStyles.descriptionNormal}>
                                 is to create enduring value and deliver luxurious, comfortable homes for generations to come.
                             </Typography>
-                        </Box>
+                        </AnyBox>
 
                         <Button sx={aboutStyles.consultationButton}>
                             Consultation
                             <ArrowOutwardIcon />
                         </Button>
-                    </Box>
+                    </AnyBox>
 
                     {/* Right Column - Image */}
-                    <Box sx={aboutStyles.rightColumn}>
-                        <Box sx={aboutStyles.imageContainer}>
-                            <Box
+                    <AnyBox sx={aboutStyles.rightColumn}>
+                        <AnyBox sx={aboutStyles.imageContainer}>
+                            <AnyBox
                                 {...({
                                     component: 'img',
                                     src: mainImage,
@@ -408,67 +411,67 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                             />
 
                             {/* Logo Overlay */}
-                            <Box sx={aboutStyles.logoOverlay}>PH</Box>
+                            <AnyBox sx={aboutStyles.logoOverlay}>PH</AnyBox>
 
                             {/* Feature Tags */}
-                            <Box sx={aboutStyles.featureTags}>
+                            <AnyBox sx={aboutStyles.featureTags}>
                                 <Typography sx={aboutStyles.featureTag}>Security</Typography>
                                 <Typography sx={aboutStyles.featureTag}>Innovation</Typography>
                                 <Typography sx={aboutStyles.featureTag}>Practicality</Typography>
-                            </Box>
-                        </Box>
-                    </Box>
-                </Box>
+                            </AnyBox>
+                        </AnyBox>
+                    </AnyBox>
+                </AnyBox>
 
                 {/* Middle Section - Statement */}
-                <Box sx={aboutStyles.statementSection}>
+                <AnyBox sx={aboutStyles.statementSection}>
                     <Typography sx={aboutStyles.statementText}>
-                        <Box component='span' sx={aboutStyles.statementDark}>
+                        <AnyBox component='span' sx={aboutStyles.statementDark}>
                             Premier Housing combines decades of experience with innovative design{' '}
-                        </Box>
-                        <Box component='span' sx={aboutStyles.statementGold}>
+                        </AnyBox>
+                        <AnyBox component='span' sx={aboutStyles.statementGold}>
                             to set a new standard in residential living.
-                        </Box>{' '}
-                        <Box component='span' sx={aboutStyles.statementDark}>
+                        </AnyBox>{' '}
+                        <AnyBox component='span' sx={aboutStyles.statementDark}>
                             Our commitment to quality redefines how families{' '}
-                        </Box>
-                        <Box component='span' sx={aboutStyles.statementGold}>
+                        </AnyBox>
+                        <AnyBox component='span' sx={aboutStyles.statementGold}>
                             experience home{' '}
-                        </Box>
-                        <Box component='span' sx={aboutStyles.statementDark}>
+                        </AnyBox>
+                        <AnyBox component='span' sx={aboutStyles.statementDark}>
                             — elevating{' '}
-                        </Box>
-                        <Box component='span' sx={aboutStyles.statementGold}>
+                        </AnyBox>
+                        <AnyBox component='span' sx={aboutStyles.statementGold}>
                             trust, comfort, and craftsmanship{' '}
-                        </Box>
-                        <Box component='span' sx={aboutStyles.statementDark}>
+                        </AnyBox>
+                        <AnyBox component='span' sx={aboutStyles.statementDark}>
                             into one seamless experience.
-                        </Box>
+                        </AnyBox>
                     </Typography>
-                </Box>
+                </AnyBox>
 
                 {/* Bottom Section - Project Carousel */}
-                <Box sx={aboutStyles.carouselSection}>
+                <AnyBox sx={aboutStyles.carouselSection}>
                     {/* Carousel Header */}
-                    <Box sx={aboutStyles.carouselHeader}>
+                    <AnyBox sx={aboutStyles.carouselHeader}>
                         {/* Navigation Arrows */}
-                        <Box sx={aboutStyles.carouselNav}>
+                        <AnyBox sx={aboutStyles.carouselNav}>
                             <Button sx={aboutStyles.navButton}>‹</Button>
                             <Button sx={aboutStyles.navButton}>›</Button>
-                        </Box>
+                        </AnyBox>
 
                         {/* Consultation Button */}
                         <Button sx={aboutStyles.consultationButton}>
                             Consultation
                             <ArrowOutwardIcon />
                         </Button>
-                    </Box>
+                    </AnyBox>
 
                     {/* Project Cards */}
-                    <Box ref={cardsRef} sx={aboutStyles.projectCards}>
+                    <AnyBox ref={cardsRef} sx={aboutStyles.projectCards}>
                         {projectImages.map((project) => (
-                            <Box key={project.id} sx={aboutStyles.projectCard} className='projectCard'>
-                                <Box
+                            <AnyBox key={project.id} sx={aboutStyles.projectCard} className='projectCard'>
+                                <AnyBox
                                     {...({
                                         component: 'img',
                                         src: project.image,
@@ -478,9 +481,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                                 />
 
                                 {/* Arrow Icon */}
-                                <Box sx={aboutStyles.projectArrow}>
+                                <AnyBox sx={aboutStyles.projectArrow}>
                                     <ArrowOutwardIcon sx={{ fontSize: '18px' }} />
-                                </Box>
+                                </AnyBox>
 
                                 {/* Project Title */}
                                 <Typography sx={aboutStyles.projectTitle}>
@@ -491,12 +494,12 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                                 <Typography sx={aboutStyles.projectDescription}>
                                     {project.description}
                                 </Typography>
-                            </Box>
+                            </AnyBox>
                         ))}
-                    </Box>
-                </Box>
+                    </AnyBox>
+                </AnyBox>
             </Container>
-        </Box>
+        </AnyBox>
     );
 };
 

@@ -7,6 +7,9 @@ import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
 interface HeroSectionBlueprintProps {
     /** Main title text */
     title?: string;
@@ -325,21 +328,21 @@ const BlueprintBuilding: React.FC<BuildingProps> = ({
     };
 
     return (
-        <Box sx={buildingStyles}>
+        <AnyBox sx={buildingStyles}>
             {/* Front Face */}
-            <Box sx={frontFace} />
+            <AnyBox sx={frontFace} />
 
             {/* Side Face */}
-            <Box sx={sideFace} />
+            <AnyBox sx={sideFace} />
 
             {/* Top Face */}
-            <Box sx={topFace} />
+            <AnyBox sx={topFace} />
 
             {/* Antenna (for tallest buildings) */}
-            {hasAntenna && isVisible && <Box sx={antennaStyles} />}
+            {hasAntenna && isVisible && <AnyBox sx={antennaStyles} />}
 
             {/* Vertical Edge Lights */}
-            <Box sx={{
+            <AnyBox sx={{
                 position: 'absolute',
                 left: 0,
                 top: 0,
@@ -348,7 +351,7 @@ const BlueprintBuilding: React.FC<BuildingProps> = ({
                 background: 'linear-gradient(0deg, rgba(0, 200, 255, 0.2), rgba(0, 200, 255, 0.8), rgba(0, 200, 255, 0.2))',
                 boxShadow: '0 0 10px rgba(0, 200, 255, 0.6)',
             }} />
-            <Box sx={{
+            <AnyBox sx={{
                 position: 'absolute',
                 right: 0,
                 top: 0,
@@ -357,7 +360,7 @@ const BlueprintBuilding: React.FC<BuildingProps> = ({
                 background: 'linear-gradient(0deg, rgba(0, 200, 255, 0.2), rgba(0, 200, 255, 0.8), rgba(0, 200, 255, 0.2))',
                 boxShadow: '0 0 10px rgba(0, 200, 255, 0.6)',
             }} />
-        </Box>
+        </AnyBox>
     );
 };
 
@@ -379,10 +382,10 @@ export const HeroSectionBlueprint: React.FC<HeroSectionBlueprintProps> = ({
     ];
 
     return (
-        <Box sx={heroStyles.container}>
+        <AnyBox sx={heroStyles.container}>
             {/* 3D Blueprint Buildings */}
-            <Box sx={heroStyles.scene}>
-                <Box sx={heroStyles.buildingsContainer}>
+            <AnyBox sx={heroStyles.scene}>
+                <AnyBox sx={heroStyles.buildingsContainer}>
                     {buildings.map((building, index) => (
                         <BlueprintBuilding
                             key={index}
@@ -394,13 +397,13 @@ export const HeroSectionBlueprint: React.FC<HeroSectionBlueprintProps> = ({
                             hasAntenna={building.hasAntenna}
                         />
                     ))}
-                </Box>
-            </Box>
+                </AnyBox>
+            </AnyBox>
 
             {/* Text Overlay */}
-            <Box sx={heroStyles.overlay}>
+            <AnyBox sx={heroStyles.overlay}>
                 <Container maxWidth='lg'>
-                    <Box sx={heroStyles.content}>
+                    <AnyBox sx={heroStyles.content}>
                         <Typography sx={heroStyles.title}>
                             {title}
                         </Typography>
@@ -417,10 +420,10 @@ export const HeroSectionBlueprint: React.FC<HeroSectionBlueprintProps> = ({
                                 {buttonText}
                             </Button>
                         )}
-                    </Box>
+                    </AnyBox>
                 </Container>
-            </Box>
-        </Box>
+            </AnyBox>
+        </AnyBox>
     );
 };
 

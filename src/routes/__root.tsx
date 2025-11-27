@@ -8,6 +8,9 @@ import { Box } from '@mui/material';
 import { CustomAppBar } from '@/components/CustomAppBar/CustomAppBar';
 import type { SxProps, Theme } from '@mui/material';
 
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
 const layoutStyles: Record<string, SxProps<Theme>> = {
     main: {
         minHeight: '100vh',
@@ -25,12 +28,12 @@ export const Route = createRootRoute({
 
 function RootLayout() {
     return (
-        <Box sx={layoutStyles.main}>
+        <AnyBox sx={layoutStyles.main}>
             <CustomAppBar />
-            <Box sx={layoutStyles.content}>
+            <AnyBox sx={layoutStyles.content}>
                 <Outlet />
-            </Box>
-        </Box>
+            </AnyBox>
+        </AnyBox>
     );
 }
 

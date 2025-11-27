@@ -12,6 +12,9 @@ import { PortfolioSection } from '@/components/PortfolioSection';
 import { ContactFooterSection } from '@/components/ContactFooterSection';
 import { useNavigate } from '@tanstack/react-router';
 
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
 export const HomePage: React.FC = () => {
     const navigate = useNavigate();
 
@@ -20,7 +23,7 @@ export const HomePage: React.FC = () => {
     };
 
     return (
-        <Box>
+        <AnyBox>
             {/* Hero Section with Background Image */}
             <HeroSectionSimple
                 title='Find Your Dream Home'
@@ -40,7 +43,7 @@ export const HomePage: React.FC = () => {
 
             {/* Contact & Footer Section */}
             <ContactFooterSection />
-        </Box>
+        </AnyBox>
     );
 };
 

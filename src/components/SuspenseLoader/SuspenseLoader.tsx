@@ -8,6 +8,9 @@ import React, { Suspense } from 'react';
 import { Box, CircularProgress, Fade } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
 const loaderStyles: Record<string, SxProps<Theme>> = {
     container: {
         display: 'flex',
@@ -28,14 +31,14 @@ interface SuspenseLoaderProps {
 
 const Loader: React.FC<{ minHeight?: string | number }> = ({ minHeight }) => (
     <Fade in timeout={300}>
-        <Box
+        <AnyBox
             sx={{
                 ...loaderStyles.container,
                 minHeight: minHeight || '200px',
             }}
         >
             <CircularProgress sx={loaderStyles.progress} size={48} thickness={3.6} />
-        </Box>
+        </AnyBox>
     </Fade>
 );
 

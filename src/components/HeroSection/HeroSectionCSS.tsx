@@ -7,7 +7,10 @@ import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 
-interface HeroSectionCSSProps {
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
+interface HeroSectionCSSProps{
     /** Main title text */
     title?: string;
     /** Subtitle text */
@@ -228,7 +231,7 @@ const Building: React.FC<BuildingProps> = ({ height, width, delay, color, positi
         },
     };
 
-    return <Box sx={buildingStyles} />;
+    return <AnyBox sx={buildingStyles} />;
 };
 
 export const HeroSectionCSS: React.FC<HeroSectionCSSProps> = ({
@@ -250,10 +253,10 @@ export const HeroSectionCSS: React.FC<HeroSectionCSSProps> = ({
     ];
 
     return (
-        <Box sx={heroStyles.container}>
+        <AnyBox sx={heroStyles.container}>
             {/* 3D Buildings Background */}
-            <Box sx={heroStyles.canvas}>
-                <Box sx={heroStyles.buildingsContainer}>
+            <AnyBox sx={heroStyles.canvas}>
+                <AnyBox sx={heroStyles.buildingsContainer}>
                     {buildings.map((building, index) => (
                         <Building
                             key={index}
@@ -264,13 +267,13 @@ export const HeroSectionCSS: React.FC<HeroSectionCSSProps> = ({
                             position={building.position}
                         />
                     ))}
-                </Box>
-            </Box>
+                </AnyBox>
+            </AnyBox>
 
             {/* Text Overlay */}
-            <Box sx={heroStyles.overlay}>
+            <AnyBox sx={heroStyles.overlay}>
                 <Container maxWidth='lg'>
-                    <Box sx={heroStyles.content}>
+                    <AnyBox sx={heroStyles.content}>
                         <Typography sx={heroStyles.title}>
                             {title}
                         </Typography>
@@ -287,10 +290,10 @@ export const HeroSectionCSS: React.FC<HeroSectionCSSProps> = ({
                                 {buttonText}
                             </Button>
                         )}
-                    </Box>
+                    </AnyBox>
                 </Container>
-            </Box>
-        </Box>
+            </AnyBox>
+        </AnyBox>
     );
 };
 

@@ -8,6 +8,9 @@ import { Box, Typography, Button, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
 const servicesStyles: Record<string, SxProps<Theme>> = {
     section: {
         backgroundColor: '#1A1A1A',
@@ -263,62 +266,62 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
     }, []);
 
     return (
-        <Box sx={servicesStyles.section}>
+        <AnyBox sx={servicesStyles.section}>
             <Container maxWidth='xl'>
                 {/* Top Area */}
-                <Box sx={servicesStyles.topArea}>
+                <AnyBox sx={servicesStyles.topArea}>
                     {/* Left Content */}
-                    <Box sx={servicesStyles.leftContent}>
+                    <AnyBox sx={servicesStyles.leftContent}>
                         <Typography sx={servicesStyles.sectionLabel}>
                             02 - services
                         </Typography>
 
                         <Typography sx={servicesStyles.heading}>
-                            <Box component='span' sx={servicesStyles.headingWhite}>
+                            <AnyBox component='span' sx={servicesStyles.headingWhite}>
                                 FROM{' '}
-                            </Box>
-                            <Box component='span' sx={servicesStyles.headingGold}>
+                            </AnyBox>
+                            <AnyBox component='span' sx={servicesStyles.headingGold}>
                                 IDEA TO
-                            </Box>
+                            </AnyBox>
                             <br />
-                            <Box component='span' sx={servicesStyles.headingWhite}>
+                            <AnyBox component='span' sx={servicesStyles.headingWhite}>
                                 FINAL PRODUCT
-                            </Box>
+                            </AnyBox>
                         </Typography>
 
-                        <Box sx={servicesStyles.carouselNav}>
+                        <AnyBox sx={servicesStyles.carouselNav}>
                             <Button sx={servicesStyles.navButton}>‹</Button>
                             <Button sx={servicesStyles.navButton}>›</Button>
-                        </Box>
-                    </Box>
+                        </AnyBox>
+                    </AnyBox>
 
                     {/* Right Content */}
-                    <Box sx={servicesStyles.rightContent}>
-                        <Box sx={servicesStyles.description}>
+                    <AnyBox sx={servicesStyles.rightContent}>
+                        <AnyBox sx={servicesStyles.description}>
                             <Typography component='span' sx={servicesStyles.descriptionWhite}>
                                 From private residences to public spaces we bring ideas to life that make living more comfortable,{' '}
                             </Typography>
                             <Typography component='span' sx={servicesStyles.descriptionGrey}>
                                 blending innovation with timeless design and creating inspiring environments that truly connect and endure.
                             </Typography>
-                        </Box>
+                        </AnyBox>
 
                         <Button sx={servicesStyles.consultationButton}>
                             Consultation
                             <ArrowOutwardIcon />
                         </Button>
-                    </Box>
-                </Box>
+                    </AnyBox>
+                </AnyBox>
 
                 {/* Service Cards */}
-                <Box ref={cardsRef} sx={servicesStyles.cardsContainer}>
+                <AnyBox ref={cardsRef} sx={servicesStyles.cardsContainer}>
                     {services.map((service) => (
-                        <Box
+                        <AnyBox
                             key={service.id}
                             sx={servicesStyles.serviceCard}
                             className={`serviceCard ${service.offset ? 'offset' : ''}`}
                         >
-                            <Box
+                            <AnyBox
                                 {...({
                                     component: 'img',
                                     src: service.image,
@@ -327,23 +330,23 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                                 } as any)}
                             />
 
-                            <Box sx={servicesStyles.cardHeader}>
+                            <AnyBox sx={servicesStyles.cardHeader}>
                                 <Typography sx={servicesStyles.cardTitle}>
                                     {service.title}
                                 </Typography>
                                 <Typography sx={servicesStyles.cardNumber}>
                                     {service.number}
                                 </Typography>
-                            </Box>
+                            </AnyBox>
 
                             <Typography sx={servicesStyles.cardDescription}>
                                 {service.description}
                             </Typography>
-                        </Box>
+                        </AnyBox>
                     ))}
-                </Box>
+                </AnyBox>
             </Container>
-        </Box>
+        </AnyBox>
     );
 };
 

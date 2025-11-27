@@ -10,6 +10,9 @@ import type { SxProps, Theme } from '@mui/material';
 import { HeroScene3D } from './HeroScene3D';
 import { SuspenseLoader } from '@/components/SuspenseLoader/SuspenseLoader';
 
+// Helper to bypass MUI type limitations
+const AnyBox = Box as any;
+
 interface HeroSectionProps {
     /** Main title text */
     title?: string;
@@ -134,16 +137,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     onButtonClick,
 }) => {
     return (
-        <Box sx={heroStyles.container}>
+        <AnyBox sx={heroStyles.container}>
             {/* 3D Canvas Background */}
-            <Box sx={heroStyles.canvas}>
+            <AnyBox sx={heroStyles.canvas}>
                 <Suspense
                     fallback={
-                        <Box sx={heroStyles.loadingFallback}>
+                        <AnyBox sx={heroStyles.loadingFallback}>
                             <SuspenseLoader minHeight='90vh'>
-                                <Box />
+                                <AnyBox />
                             </SuspenseLoader>
-                        </Box>
+                        </AnyBox>
                     }
                 >
                     <Canvas
@@ -160,12 +163,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                         <HeroScene3D />
                     </Canvas>
                 </Suspense>
-            </Box>
+            </AnyBox>
 
             {/* Text Overlay */}
-            <Box sx={heroStyles.overlay}>
+            <AnyBox sx={heroStyles.overlay}>
                 <Container maxWidth='lg'>
-                    <Box sx={heroStyles.content}>
+                    <AnyBox sx={heroStyles.content}>
                         <Typography sx={heroStyles.title}>
                             {title}
                         </Typography>
@@ -182,10 +185,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                                 {buttonText}
                             </Button>
                         )}
-                    </Box>
+                    </AnyBox>
                 </Container>
-            </Box>
-        </Box>
+            </AnyBox>
+        </AnyBox>
     );
 };
 
