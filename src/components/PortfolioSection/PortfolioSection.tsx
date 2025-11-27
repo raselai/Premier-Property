@@ -366,7 +366,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                 {/* Project Cards Carousel */}
                 <Box sx={portfolioStyles.carouselContainer}>
                     <Box ref={cardsRef} sx={portfolioStyles.carouselWrapper}>
-                        {filteredProjects.map((project, index) => (
+                        {filteredProjects.map((project) => (
                             <Box
                                 key={project.id}
                                 sx={portfolioStyles.projectCard}

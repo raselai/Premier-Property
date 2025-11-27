@@ -245,6 +245,49 @@ export const CustomAppBar: React.FC = () => {
         window.open(urls[platform], '_blank');
     };
 
+    const renderNavItem = (item: NavigationItem) => {
+        if (item.submenu) {
+            return (
+                <React.Fragment key={item.label}>
+                    <Button
+                        sx={appBarStyles.navButton}
+                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleMenuOpen(e, item.label)}
+                        endIcon={<ExpandMoreIcon />}
+                    >
+                        {item.label}
+                    </Button>
+                    <Menu
+                        anchorEl={anchorEls[item.label]}
+                        open={Boolean(anchorEls[item.label])}
+                        onClose={() => handleMenuClose(item.label)}
+                        sx={appBarStyles.menu}
+                    >
+                        {item.submenu.map((subItem) => (
+                            <MenuItem
+                                key={subItem.path}
+                                onClick={() => handleNavigate(subItem.path)}
+                                sx={appBarStyles.menuItem}
+                            >
+                                {subItem.label}
+                            </MenuItem>
+                        ))}
+                    </Menu>
+                </React.Fragment>
+            ) as React.ReactElement;
+        }
+        return (
+            <Button
+                key={item.label}
+                sx={appBarStyles.navButton}
+                onClick={() => handleNavigate(item.path!)}
+            >
+                {item.label}
+            </Button>
+        ) as React.ReactElement;
+    };
+
+    const navItems: React.ReactNode[] = navigationItems.map((item) => renderNavItem(item));
+
     return (
         <>
             <AppBar position='fixed' elevation={0} sx={appBarStyles.appBar}>
@@ -259,45 +302,9 @@ export const CustomAppBar: React.FC = () => {
                     />
 
                     {/* Desktop Navigation */}
+                    {/* @ts-expect-error - TypeScript limitation: complex union type from conditional rendering */}
                     <Box sx={appBarStyles.navContainer}>
-                        {navigationItems.map((item) => (
-                            <Box key={item.label}>
-                                {item.submenu ? (
-                                    <>
-                                        <Button
-                                            sx={appBarStyles.navButton}
-                                            onClick={(e) => handleMenuOpen(e, item.label)}
-                                            endIcon={<ExpandMoreIcon />}
-                                        >
-                                            {item.label}
-                                        </Button>
-                                        <Menu
-                                            anchorEl={anchorEls[item.label]}
-                                            open={Boolean(anchorEls[item.label])}
-                                            onClose={() => handleMenuClose(item.label)}
-                                            sx={appBarStyles.menu}
-                                        >
-                                            {item.submenu.map((subItem) => (
-                                                <MenuItem
-                                                    key={subItem.path}
-                                                    onClick={() => handleNavigate(subItem.path)}
-                                                    sx={appBarStyles.menuItem}
-                                                >
-                                                    {subItem.label}
-                                                </MenuItem>
-                                            ))}
-                                        </Menu>
-                                    </>
-                                ) : (
-                                    <Button
-                                        sx={appBarStyles.navButton}
-                                        onClick={() => handleNavigate(item.path!)}
-                                    >
-                                        {item.label}
-                                    </Button>
-                                )}
-                            </Box>
-                        ))}
+                        {navItems}
                     </Box>
 
                     {/* Right Icons */}

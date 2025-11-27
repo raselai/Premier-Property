@@ -11,13 +11,11 @@ declare module '@mui/material/styles' {
     interface Palette {
         gold: Palette['primary'];
         dark: Palette['primary'];
-        grey: Palette['primary'];
     }
 
     interface PaletteOptions {
         gold?: PaletteOptions['primary'];
         dark?: PaletteOptions['primary'];
-        grey?: PaletteOptions['primary'];
     }
 }
 
@@ -46,12 +44,6 @@ export const theme = createTheme({
             light: '#2D2D2D',
             dark: '#000000',
             contrastText: '#D4AF37',
-        },
-        grey: {
-            main: '#8B8B8B',
-            light: '#A8A8A8',
-            dark: '#6E6E6E',
-            contrastText: '#FFFFFF',
         },
         background: {
             default: '#FFFFFF',

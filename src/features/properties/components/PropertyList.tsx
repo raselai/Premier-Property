@@ -248,7 +248,7 @@ export const PropertyList: React.FC<PropertyListProps> = ({
             {filteredProperties.length > 0 ? (
                 <Grid container spacing={3} sx={listStyles.grid}>
                     {filteredProperties.map((property) => (
-                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={property.id}>
+                        <Grid item xs={12} sm={6} md={4} key={property.id}>
                             <PropertyCard
                                 id={property.id}
                                 title={property.title}

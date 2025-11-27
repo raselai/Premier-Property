@@ -3,7 +3,7 @@
  * Two-column layout with company information and featured image
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
@@ -307,7 +307,6 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         },
     ],
 }) => {
-    const [visibleCards, setVisibleCards] = useState<number[]>([]);
     const cardsRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {

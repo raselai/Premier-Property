@@ -127,9 +127,9 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
             <Box sx={cardStyles.media}>
                 <CardMedia
                     component='img'
-                    height='240'
                     image={image}
                     alt={title}
+                    sx={{ height: '240px' }}
                 />
                 <Chip label={status} sx={cardStyles.statusChip} />
             </Box>

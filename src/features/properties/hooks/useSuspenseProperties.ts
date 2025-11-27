@@ -60,12 +60,17 @@ export function useSuspenseFeaturedProperties(limit: number = 6) {
 
 /**
  * Search properties by location
+ * Note: useSuspenseQuery doesn't support 'enabled' option.
+ * Conditionally call this hook instead based on query length.
  */
 export function useSuspensePropertySearch(query: string) {
+    if (query.length <= 2) {
+        throw new Error('Query must be longer than 2 characters');
+    }
+    
     return useSuspenseQuery<Property[], Error>({
         queryKey: ['properties', 'search', query],
         queryFn: () => propertyApi.searchByLocation(query),
-        enabled: query.length > 2,
         staleTime: 1 * 60 * 1000, // 1 minute
     });
 }
