@@ -293,13 +293,15 @@ export const CustomAppBar: React.FC = () => {
             <AppBar position='fixed' elevation={0} sx={appBarStyles.appBar}>
                 <Toolbar sx={appBarStyles.toolbar}>
                     {/* Logo */}
-                    {/* @ts-ignore - MUI Box component="img" type limitation */}
+                    {/* @ts-expect-error - Complex union type from Box component with img */}
                     <Box
-                        component='img'
-                        src='/Logo.jpg'
-                        alt='Premium Property'
-                        sx={appBarStyles.logo}
-                        onClick={() => handleNavigate('/')}
+                        {...({
+                            component: 'img',
+                            src: '/Logo.jpg',
+                            alt: 'Premium Property',
+                            sx: appBarStyles.logo,
+                            onClick: () => handleNavigate('/'),
+                        } as any)}
                     />
 
                     {/* Desktop Navigation */}
