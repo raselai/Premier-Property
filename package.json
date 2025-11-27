@@ -1,0 +1,48 @@
+{
+    "name": "premium-property",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Premium Property Real Estate Application",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "preview": "vite preview",
+        "type-check": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.11.4",
+        "@emotion/styled": "^11.11.5",
+        "@hookform/resolvers": "^3.3.4",
+        "@mui/icons-material": "^5.15.15",
+        "@mui/material": "^5.15.15",
+        "@mui/x-data-grid-pro": "^7.3.0",
+        "@react-three/drei": "^10.7.7",
+        "@react-three/fiber": "^9.4.0",
+        "@tanstack/react-query": "^5.32.0",
+        "@tanstack/react-query-devtools": "^5.32.0",
+        "@tanstack/react-router": "^1.29.0",
+        "axios": "^1.6.8",
+        "notistack": "^3.0.1",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-error-boundary": "^4.0.13",
+        "react-hook-form": "^7.51.3",
+        "three": "^0.181.2",
+        "use-debounce": "^10.0.0",
+        "zod": "^3.23.6"
+    },
+    "devDependencies": {
+        "@tanstack/router-vite-plugin": "^1.29.0",
+        "@types/react": "^18.3.1",
+        "@types/react-dom": "^18.3.0",
+        "@typescript-eslint/eslint-plugin": "^7.7.0",
+        "@typescript-eslint/parser": "^7.7.0",
+        "@vitejs/plugin-react": "^4.2.1",
+        "eslint": "^8.57.0",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-react-refresh": "^0.4.6",
+        "typescript": "^5.4.5",
+        "vite": "^5.2.9"
+    }
+}
