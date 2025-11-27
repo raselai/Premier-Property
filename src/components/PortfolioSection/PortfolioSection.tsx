@@ -373,6 +373,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                                 className='projectCard'
                             >
                                 <Box sx={portfolioStyles.cardImageContainer}>
+                                    {/* @ts-ignore - MUI Box with component="img" type limitation */}
                                     <Box
                                         component='img'
                                         src={project.image}

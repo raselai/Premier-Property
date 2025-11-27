@@ -398,6 +398,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                     {/* Right Column - Image */}
                     <Box sx={aboutStyles.rightColumn}>
                         <Box sx={aboutStyles.imageContainer}>
+                            {/* @ts-ignore - MUI Box with component="img" type limitation */}
                             <Box
                                 component='img'
                                 src={mainImage}
@@ -466,6 +467,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                     <Box ref={cardsRef} sx={aboutStyles.projectCards}>
                         {projectImages.map((project) => (
                             <Box key={project.id} sx={aboutStyles.projectCard} className='projectCard'>
+                                {/* @ts-ignore - MUI Box with component="img" type limitation */}
                                 <Box
                                     component='img'
                                     src={project.image}

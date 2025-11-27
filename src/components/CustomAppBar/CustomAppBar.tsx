@@ -293,6 +293,7 @@ export const CustomAppBar: React.FC = () => {
             <AppBar position='fixed' elevation={0} sx={appBarStyles.appBar}>
                 <Toolbar sx={appBarStyles.toolbar}>
                     {/* Logo */}
+                    {/* @ts-ignore - MUI Box with component="img" type limitation */}
                     <Box
                         component='img'
                         src='/Logo.jpg'
@@ -302,7 +303,7 @@ export const CustomAppBar: React.FC = () => {
                     />
 
                     {/* Desktop Navigation */}
-                    {/* @ts-expect-error - TypeScript limitation: complex union type from conditional rendering */}
+                    {/* @ts-ignore - TypeScript limitation: complex union type from conditional rendering */}
                     <Box sx={appBarStyles.navContainer}>
                         {navItems}
                     </Box>
