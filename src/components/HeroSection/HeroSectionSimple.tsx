@@ -7,9 +7,6 @@ import React from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 
-// Helper to bypass MUI type limitations
-const AnyBox = Box as any;
-
 interface HeroSectionSimpleProps {
     title?: string;
     subtitle?: string;
@@ -95,8 +92,8 @@ const heroStyles: Record<string, SxProps<Theme>> = {
         letterSpacing: '0.01em',
     },
     button: {
-        backgroundColor: '#D4AF37',
-        color: '#1A1A1A',
+        backgroundColor: '#CE9443',
+        color: '#FFFFFF',
         fontFamily: 'Gilroy, sans-serif',
         fontWeight: 700,
         px: { xs: 4, md: 6 },
@@ -104,12 +101,12 @@ const heroStyles: Record<string, SxProps<Theme>> = {
         fontSize: { xs: '1.125rem', md: '1.375rem' },
         borderRadius: '50px',
         textTransform: 'none',
-        boxShadow: '0 8px 30px rgba(212, 175, 55, 0.4)',
+        boxShadow: '0 8px 30px rgba(206, 148, 67, 0.4)',
         transition: 'all 0.3s ease',
         '&:hover': {
-            backgroundColor: '#E5C158',
+            backgroundColor: '#E5B864',
             transform: 'translateY(-3px)',
-            boxShadow: '0 12px 40px rgba(212, 175, 55, 0.6)',
+            boxShadow: '0 12px 40px rgba(206, 148, 67, 0.6)',
         },
         '&:active': {
             transform: 'translateY(-1px)',
@@ -155,68 +152,68 @@ const heroStyles: Record<string, SxProps<Theme>> = {
 };
 
 export const HeroSectionSimple: React.FC<HeroSectionSimpleProps> = ({
-    title: _title = 'Find Your Dream Home',
+    title = 'Find Your Dream Home',
     subtitle = 'House and Development Ltd',
-    buttonText = 'Browse Properties',
+    buttonText = "Let's Talk",
     onButtonClick,
 }) => {
     return (
-        <AnyBox sx={heroStyles.container}>
+        <Box sx={heroStyles.container}>
             {/* PREMIER Watermark - Behind Content */}
-            <AnyBox sx={heroStyles.watermark}>
+            <Box sx={heroStyles.watermark}>
                 <Typography sx={heroStyles.watermarkText}>
                     PREMIER
                 </Typography>
-            </AnyBox>
+            </Box>
 
             {/* Statistics Cards - Bottom Right on Desktop (Outside Container) */}
-            <AnyBox sx={{ ...heroStyles.statsContainer, display: { xs: 'none', md: 'flex' } }}>
+            <Box sx={{ ...heroStyles.statsContainer, display: { xs: 'none', md: 'flex' } }}>
                 {/* Years of Experience Card */}
-                <AnyBox sx={heroStyles.statsCard}>
+                <Box sx={heroStyles.statsCard}>
                     <Typography sx={heroStyles.statsNumber}>25+</Typography>
                     <Typography sx={heroStyles.statsText}>
                         Years of architectural
                         <br />
                         excellence and innovation
                     </Typography>
-                </AnyBox>
+                </Box>
 
                 {/* Projects Completed Card */}
-                <AnyBox sx={heroStyles.statsCard}>
+                <Box sx={heroStyles.statsCard}>
                     <Typography sx={heroStyles.statsNumber}>549</Typography>
                     <Typography sx={heroStyles.statsText}>
                         Projects implemented
                         <br />
                         worldwide with excellence
                     </Typography>
-                </AnyBox>
-            </AnyBox>
+                </Box>
+            </Box>
 
             {/* Main Content - Above Watermark */}
             <Container maxWidth='lg' sx={heroStyles.content}>
-                <AnyBox sx={{ width: '100%' }}>
+                <Box sx={{ width: '100%' }}>
                     {/* Statistics Cards - Mobile Only (Inside Container) */}
-                    <AnyBox sx={{ ...heroStyles.statsContainer, display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={{ ...heroStyles.statsContainer, display: { xs: 'flex', md: 'none' } }}>
                         {/* Years of Experience Card */}
-                        <AnyBox sx={heroStyles.statsCard}>
+                        <Box sx={heroStyles.statsCard}>
                             <Typography sx={heroStyles.statsNumber}>25+</Typography>
                             <Typography sx={heroStyles.statsText}>
                                 Years of architectural
                                 <br />
                                 excellence and innovation
                             </Typography>
-                        </AnyBox>
+                        </Box>
 
                         {/* Projects Completed Card */}
-                        <AnyBox sx={heroStyles.statsCard}>
+                        <Box sx={heroStyles.statsCard}>
                             <Typography sx={heroStyles.statsNumber}>549</Typography>
                             <Typography sx={heroStyles.statsText}>
                                 Projects implemented
                                 <br />
                                 worldwide with excellence
                             </Typography>
-                        </AnyBox>
-                    </AnyBox>
+                        </Box>
+                    </Box>
 
                     <Typography sx={heroStyles.subtitle}>
                         {subtitle}
@@ -231,9 +228,9 @@ export const HeroSectionSimple: React.FC<HeroSectionSimpleProps> = ({
                             {buttonText}
                         </Button>
                     )}
-                </AnyBox>
+                </Box>
             </Container>
-        </AnyBox>
+        </Box>
     );
 };
 

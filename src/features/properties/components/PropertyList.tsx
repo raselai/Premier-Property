@@ -10,9 +10,6 @@ import { PropertyCard } from '@/components/PropertyCard/PropertyCard';
 import type { PropertyStatus } from '@/types/property';
 import { useNavigate } from '@tanstack/react-router';
 
-// Helper to bypass MUI type limitations
-const AnyBox = Box as any;
-
 const listStyles: Record<string, SxProps<Theme>> = {
     container: {
         p: { xs: 2, md: 4 },
@@ -203,18 +200,18 @@ export const PropertyList: React.FC<PropertyListProps> = ({
     );
 
     return (
-        <AnyBox sx={listStyles.container}>
-            <AnyBox sx={listStyles.header}>
+        <Box sx={listStyles.container}>
+            <Box sx={listStyles.header}>
                 <Typography variant='h2' sx={listStyles.title}>
                     {title}
                 </Typography>
                 <Typography variant='subtitle1' sx={listStyles.subtitle}>
                     {subtitle}
                 </Typography>
-            </AnyBox>
+            </Box>
 
             {/* Filters */}
-            <AnyBox sx={listStyles.filters}>
+            <Box sx={listStyles.filters}>
                 <TextField
                     select
                     label='Status'
@@ -245,13 +242,13 @@ export const PropertyList: React.FC<PropertyListProps> = ({
                     sx={listStyles.filterField}
                     placeholder='No limit'
                 />
-            </AnyBox>
+            </Box>
 
             {/* Property Grid */}
             {filteredProperties.length > 0 ? (
                 <Grid container spacing={3} sx={listStyles.grid}>
                     {filteredProperties.map((property) => (
-                        <Grid item xs={12} sm={6} md={4} key={property.id}>
+                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={property.id}>
                             <PropertyCard
                                 id={property.id}
                                 title={property.title}
@@ -268,7 +265,7 @@ export const PropertyList: React.FC<PropertyListProps> = ({
                     ))}
                 </Grid>
             ) : (
-                <AnyBox sx={listStyles.emptyState}>
+                <Box sx={listStyles.emptyState}>
                     <Typography
                         variant='h5'
                         sx={{
@@ -288,9 +285,9 @@ export const PropertyList: React.FC<PropertyListProps> = ({
                     >
                         Try adjusting your filters
                     </Typography>
-                </AnyBox>
+                </Box>
             )}
-        </AnyBox>
+        </Box>
     );
 };
 

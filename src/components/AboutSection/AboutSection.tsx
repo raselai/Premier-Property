@@ -3,13 +3,11 @@
  * Two-column layout with company information and featured image
  */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-
-// Helper to bypass MUI type limitations
-const AnyBox = Box as any;
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const aboutStyles: Record<string, SxProps<Theme>> = {
     section: {
@@ -158,6 +156,7 @@ const aboutStyles: Record<string, SxProps<Theme>> = {
         lineHeight: 1.45,
         maxWidth: '1100px',
         mx: 'auto',
+        textAlign: 'center',
     },
     statementDark: {
         color: '#2D2D2D',
@@ -215,8 +214,8 @@ const aboutStyles: Record<string, SxProps<Theme>> = {
         flex: { md: '0 0 32%' },
         borderRadius: '20px',
         overflow: 'hidden',
-        paddingTop: { xs: '125%', md: 0 },
-        height: { xs: 'auto', md: '380px' },
+        paddingTop: { xs: '140%', md: 0 },
+        height: { xs: 'auto', md: '480px' },
         cursor: 'pointer',
         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
@@ -262,12 +261,14 @@ const aboutStyles: Record<string, SxProps<Theme>> = {
         position: 'absolute',
         top: '20px',
         left: '20px',
+        right: '20px',
         fontFamily: 'Gilroy, sans-serif',
-        fontSize: { xs: '18px', md: '20px' },
+        fontSize: { xs: '20px', md: '24px' },
         fontWeight: 700,
         color: '#FFFFFF',
         textShadow: '0 2px 10px rgba(0,0,0,0.3)',
-        maxWidth: '70%',
+        textAlign: 'center',
+        lineHeight: 1.2,
     },
     projectDescription: {
         position: 'absolute',
@@ -280,11 +281,44 @@ const aboutStyles: Record<string, SxProps<Theme>> = {
         textShadow: '0 1px 5px rgba(0,0,0,0.5)',
         maxWidth: '70%',
     },
+    projectItemsList: {
+        position: 'absolute',
+        bottom: '20px',
+        left: '20px',
+        right: '20px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '8px',
+    },
+    projectItem: {
+        display: 'flex',
+        alignItems: 'flex-start',
+        gap: '8px',
+        fontFamily: 'Montserrat, sans-serif',
+        fontSize: { xs: '13px', md: '14px' },
+        fontWeight: 500,
+        color: '#FFFFFF',
+        backgroundColor: 'rgba(0, 0, 0, 0.15)',
+        backdropFilter: 'blur(4px)',
+        WebkitBackdropFilter: 'blur(4px)',
+        borderRadius: '8px',
+        padding: '10px 12px',
+        transition: 'all 0.3s ease',
+        '&:hover': {
+            backgroundColor: 'rgba(206, 148, 67, 0.2)',
+        },
+        '& .MuiSvgIcon-root': {
+            fontSize: '18px',
+            color: '#CE9443',
+            flexShrink: 0,
+            mt: '2px',
+        },
+    },
 };
 
 interface AboutSectionProps {
     mainImage?: string;
-    projectImages?: { id: number; title: string; description: string; image: string }[];
+    projectImages?: { id: number; title: string; items: string[]; image: string }[];
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({
@@ -292,24 +326,41 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
     projectImages = [
         {
             id: 1,
-            title: 'AURORA RESIDENCE',
-            description: 'A futuristic private residence where organic curves meet cutting-edge minimalism.',
-            image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800',
+            title: 'Why Choose Premier House?',
+            items: [
+                '30+ Years of Excellence',
+                'Superior Construction Standards',
+                'Customer-Focused Commitment',
+                'Prime Locations',
+                'Long-Term Value Creation',
+            ],
+            image: '/Why_Us.png',
         },
         {
             id: 2,
-            title: 'MODERN ESTATE',
-            description: 'Contemporary design meets functional luxury in this stunning property.',
-            image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800',
+            title: 'For Landowners – Joint Venture Opportunities',
+            items: [
+                'Fair land-sharing agreements',
+                'Fast project approval',
+                'Guaranteed timely execution',
+                'Maximum land value optimization',
+            ],
+            image: '/Landwoners.jpg',
         },
         {
             id: 3,
-            title: 'VISTA HEIGHTS',
-            description: 'Elevated living with panoramic views and sophisticated architecture.',
-            image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800',
+            title: "Buyer's Guide",
+            items: [
+                'How to Buy an Apartment',
+                'Payment Schedules',
+                'Legal Documents Required',
+                'Home Loan Assistance',
+            ],
+            image: '/BuyrsGuide.jpg',
         },
     ],
 }) => {
+    const [visibleCards, setVisibleCards] = useState<number[]>([]);
     const cardsRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -346,26 +397,26 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
     }, []);
 
     return (
-        <AnyBox sx={aboutStyles.section}>
+        <Box sx={aboutStyles.section}>
             <Container maxWidth='xl'>
                 {/* Top Section - Two Columns */}
-                <AnyBox sx={aboutStyles.topSection}>
+                <Box sx={aboutStyles.topSection}>
                     {/* Left Column - Text Content */}
-                    <AnyBox sx={aboutStyles.leftColumn}>
+                    <Box sx={aboutStyles.leftColumn}>
                         <Typography sx={aboutStyles.sectionLabel}>
                             01 - about us
                         </Typography>
 
                         <Typography sx={aboutStyles.heading}>
-                            <AnyBox component='span' sx={aboutStyles.headingDark}>
+                            <Box component='span' sx={aboutStyles.headingDark}>
                                 WHO{' '}
-                            </AnyBox>
-                            <AnyBox component='span' sx={aboutStyles.headingGold}>
+                            </Box>
+                            <Box component='span' sx={aboutStyles.headingGold}>
                                 WE ARE
-                            </AnyBox>
+                            </Box>
                         </Typography>
 
-                        <AnyBox sx={aboutStyles.description}>
+                        <Box sx={aboutStyles.description}>
                             <Typography component='span' sx={aboutStyles.descriptionEmphasis}>
                                 About Premier Housing & Developments Ltd.
                             </Typography>{' '}
@@ -390,116 +441,120 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                             <Typography component='span' sx={aboutStyles.descriptionNormal}>
                                 is to create enduring value and deliver luxurious, comfortable homes for generations to come.
                             </Typography>
-                        </AnyBox>
+                        </Box>
 
                         <Button sx={aboutStyles.consultationButton}>
                             Consultation
                             <ArrowOutwardIcon />
                         </Button>
-                    </AnyBox>
+                    </Box>
 
                     {/* Right Column - Image */}
-                    <AnyBox sx={aboutStyles.rightColumn}>
-                        <AnyBox sx={aboutStyles.imageContainer}>
-                            <AnyBox
-                                {...({
-                                    component: 'img',
-                                    src: mainImage,
-                                    alt: 'Premier Housing Architecture',
-                                    sx: aboutStyles.image,
-                                } as any)}
+                    <Box sx={aboutStyles.rightColumn}>
+                        <Box sx={aboutStyles.imageContainer}>
+                            <Box
+                                component='img'
+                                src={mainImage}
+                                alt='Premier Housing Architecture'
+                                sx={aboutStyles.image}
                             />
 
                             {/* Logo Overlay */}
-                            <AnyBox sx={aboutStyles.logoOverlay}>PH</AnyBox>
+                            <Box sx={aboutStyles.logoOverlay}>PH</Box>
 
                             {/* Feature Tags */}
-                            <AnyBox sx={aboutStyles.featureTags}>
+                            <Box sx={aboutStyles.featureTags}>
                                 <Typography sx={aboutStyles.featureTag}>Security</Typography>
                                 <Typography sx={aboutStyles.featureTag}>Innovation</Typography>
                                 <Typography sx={aboutStyles.featureTag}>Practicality</Typography>
-                            </AnyBox>
-                        </AnyBox>
-                    </AnyBox>
-                </AnyBox>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
 
                 {/* Middle Section - Statement */}
-                <AnyBox sx={aboutStyles.statementSection}>
+                <Box sx={aboutStyles.statementSection}>
                     <Typography sx={aboutStyles.statementText}>
-                        <AnyBox component='span' sx={aboutStyles.statementDark}>
-                            Premier Housing combines decades of experience with innovative design{' '}
-                        </AnyBox>
-                        <AnyBox component='span' sx={aboutStyles.statementGold}>
-                            to set a new standard in residential living.
-                        </AnyBox>{' '}
-                        <AnyBox component='span' sx={aboutStyles.statementDark}>
-                            Our commitment to quality redefines how families{' '}
-                        </AnyBox>
-                        <AnyBox component='span' sx={aboutStyles.statementGold}>
-                            experience home{' '}
-                        </AnyBox>
-                        <AnyBox component='span' sx={aboutStyles.statementDark}>
-                            — elevating{' '}
-                        </AnyBox>
-                        <AnyBox component='span' sx={aboutStyles.statementGold}>
-                            trust, comfort, and craftsmanship{' '}
-                        </AnyBox>
-                        <AnyBox component='span' sx={aboutStyles.statementDark}>
-                            into one seamless experience.
-                        </AnyBox>
+                        <Box component='span' sx={aboutStyles.statementGold}>
+                            Building Homes. Creating Value.{' '}
+                        </Box>
+                        <Box component='span' sx={aboutStyles.statementDark}>
+                            Since 1995.
+                        </Box>
+                        <br />
+                        <Box component='span' sx={aboutStyles.statementDark}>
+                            For more than three decades,{' '}
+                        </Box>
+                        <Box component='span' sx={aboutStyles.statementGold}>
+                            Premier Housing & Developments Ltd.{' '}
+                        </Box>
+                        <Box component='span' sx={aboutStyles.statementDark}>
+                            has been shaping modern living in Bangladesh through{' '}
+                        </Box>
+                        <Box component='span' sx={aboutStyles.statementGold}>
+                            quality, reliability,{' '}
+                        </Box>
+                        <Box component='span' sx={aboutStyles.statementDark}>
+                            and a commitment to exceptional customer value.
+                        </Box>
                     </Typography>
-                </AnyBox>
+                </Box>
 
                 {/* Bottom Section - Project Carousel */}
-                <AnyBox sx={aboutStyles.carouselSection}>
+                <Box sx={aboutStyles.carouselSection}>
                     {/* Carousel Header */}
-                    <AnyBox sx={aboutStyles.carouselHeader}>
+                    <Box sx={aboutStyles.carouselHeader}>
                         {/* Navigation Arrows */}
-                        <AnyBox sx={aboutStyles.carouselNav}>
+                        <Box sx={aboutStyles.carouselNav}>
                             <Button sx={aboutStyles.navButton}>‹</Button>
                             <Button sx={aboutStyles.navButton}>›</Button>
-                        </AnyBox>
+                        </Box>
 
                         {/* Consultation Button */}
                         <Button sx={aboutStyles.consultationButton}>
                             Consultation
                             <ArrowOutwardIcon />
                         </Button>
-                    </AnyBox>
+                    </Box>
 
                     {/* Project Cards */}
-                    <AnyBox ref={cardsRef} sx={aboutStyles.projectCards}>
+                    <Box ref={cardsRef} sx={aboutStyles.projectCards}>
                         {projectImages.map((project) => (
-                            <AnyBox key={project.id} sx={aboutStyles.projectCard} className='projectCard'>
-                                <AnyBox
-                                    {...({
-                                        component: 'img',
-                                        src: project.image,
-                                        alt: project.title,
-                                        sx: aboutStyles.projectImage,
-                                    } as any)}
+                            <Box key={project.id} sx={aboutStyles.projectCard} className='projectCard'>
+                                <Box
+                                    component='img'
+                                    src={project.image}
+                                    alt={project.title}
+                                    sx={aboutStyles.projectImage}
                                 />
 
                                 {/* Arrow Icon */}
-                                <AnyBox sx={aboutStyles.projectArrow}>
+                                <Box sx={aboutStyles.projectArrow}>
                                     <ArrowOutwardIcon sx={{ fontSize: '18px' }} />
-                                </AnyBox>
+                                </Box>
 
                                 {/* Project Title */}
                                 <Typography sx={aboutStyles.projectTitle}>
                                     {project.title}
                                 </Typography>
 
-                                {/* Project Description */}
-                                <Typography sx={aboutStyles.projectDescription}>
-                                    {project.description}
-                                </Typography>
-                            </AnyBox>
+                                {/* Project Items List */}
+                                <Box sx={aboutStyles.projectItemsList}>
+                                    {project.items.map((item, index) => (
+                                        <Box key={index} sx={aboutStyles.projectItem}>
+                                            <CheckCircleIcon />
+                                            <Typography component='span' sx={{ color: '#FFFFFF' }}>
+                                                {item}
+                                            </Typography>
+                                        </Box>
+                                    ))}
+                                </Box>
+                            </Box>
                         ))}
-                    </AnyBox>
-                </AnyBox>
+                    </Box>
+                </Box>
             </Container>
-        </AnyBox>
+        </Box>
     );
 };
 

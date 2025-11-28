@@ -4,16 +4,13 @@
  */
 
 import React from 'react';
-import { Box, Typography, TextField, Button, IconButton } from '@mui/material';
+import { Box, Typography, TextField, Button, Container, IconButton } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import XIcon from '@mui/icons-material/X';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-
-// Helper to bypass MUI type limitations
-const AnyBox = Box as any;
 
 const contactFooterStyles: Record<string, SxProps<Theme>> = {
     // Contact Section with Background
@@ -167,7 +164,7 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
     },
     // Brand Watermark Section
     brandSection: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#3D3D3D',
         py: { xs: 6, md: 10 },
         textAlign: 'center',
         overflow: 'hidden',
@@ -176,17 +173,18 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
         fontFamily: 'Gilroy, sans-serif',
         fontSize: { xs: '15vw', md: '18vw' },
         fontWeight: 800,
-        color: '#EBEBEB',
+        color: '#FFFFFF',
         letterSpacing: '-0.02em',
         lineHeight: 1,
         userSelect: 'none',
-        // Gradient mask: bottom invisible, gradually visible toward top
-        maskImage: 'linear-gradient(to top, transparent 0%, transparent 15%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.5) 100%)',
-        WebkitMaskImage: 'linear-gradient(to top, transparent 0%, transparent 15%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.5) 100%)',
+        background: 'linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 100%)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
     },
     // Footer Section
     footerSection: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#3D3D3D',
         py: { xs: 5, md: 6 },
         px: { xs: 3, md: 8, lg: 10 },
     },
@@ -202,7 +200,7 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
         fontSize: { xs: '22px', md: '28px' },
         fontWeight: 700,
         lineHeight: 1.25,
-        color: '#2D2D2D',
+        color: '#FFFFFF',
         mb: 3,
         maxWidth: '320px',
     },
@@ -212,19 +210,19 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
         '& .MuiInputBase-root': {
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '15px',
-            color: '#2D2D2D',
+            color: '#FFFFFF',
             '&::before': {
-                borderBottom: '1px solid #979797',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
             },
             '&:hover:not(.Mui-disabled)::before': {
-                borderBottom: '1px solid #2D2D2D',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.6)',
             },
             '&::after': {
-                borderBottom: '2px solid #2D2D2D',
+                borderBottom: '2px solid #FFFFFF',
             },
         },
         '& .MuiInputBase-input::placeholder': {
-            color: '#979797',
+            color: 'rgba(255, 255, 255, 0.6)',
             opacity: 1,
         },
     },
@@ -237,12 +235,13 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
     socialIcon: {
         width: '44px',
         height: '44px',
-        border: '1px solid #E0E0E0',
-        color: '#2D2D2D',
+        border: '1px solid rgba(255, 255, 255, 0.3)',
+        color: '#FFFFFF',
         transition: 'all 0.3s ease',
         '&:hover': {
-            borderColor: '#2D2D2D',
-            backgroundColor: 'rgba(45, 45, 45, 0.05)',
+            borderColor: '#CE9443',
+            backgroundColor: 'rgba(206, 148, 67, 0.15)',
+            color: '#CE9443',
         },
     },
     navLinks: {
@@ -253,7 +252,7 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
     navLink: {
         fontFamily: 'Montserrat, sans-serif',
         fontSize: '15px',
-        color: '#2D2D2D',
+        color: '#FFFFFF',
         textDecoration: 'none',
         transition: 'color 0.3s ease',
         cursor: 'pointer',
@@ -269,14 +268,14 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
     contactText: {
         fontFamily: 'Montserrat, sans-serif',
         fontSize: '15px',
-        color: '#2D2D2D',
+        color: '#FFFFFF',
     },
     // Bottom Bar
     bottomBar: {
-        borderTop: '1px solid #EEEEEE',
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
         py: 3,
         px: { xs: 3, md: 8, lg: 10 },
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#3D3D3D',
     },
     bottomContent: {
         display: 'flex',
@@ -290,7 +289,7 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
     copyright: {
         fontFamily: 'Montserrat, sans-serif',
         fontSize: '13px',
-        color: '#979797',
+        color: 'rgba(255, 255, 255, 0.6)',
     },
     bottomLinks: {
         display: 'flex',
@@ -299,12 +298,12 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
     bottomLink: {
         fontFamily: 'Montserrat, sans-serif',
         fontSize: '13px',
-        color: '#979797',
+        color: 'rgba(255, 255, 255, 0.6)',
         textDecoration: 'none',
         cursor: 'pointer',
         transition: 'color 0.3s ease',
         '&:hover': {
-            color: '#2D2D2D',
+            color: '#FFFFFF',
         },
     },
 };
@@ -313,13 +312,13 @@ export const ContactFooterSection: React.FC = () => {
     return (
         <>
             {/* Contact Section with Background Image */}
-            <AnyBox sx={contactFooterStyles.contactSection}>
-                <AnyBox sx={contactFooterStyles.contactContent}>
+            <Box sx={contactFooterStyles.contactSection}>
+                <Box sx={contactFooterStyles.contactContent}>
                     <Typography sx={contactFooterStyles.sectionLabel}>04 - contacts</Typography>
 
-                    <AnyBox sx={contactFooterStyles.contactGrid}>
+                    <Box sx={contactFooterStyles.contactGrid}>
                         {/* Left Content */}
-                        <AnyBox sx={contactFooterStyles.leftContent}>
+                        <Box sx={contactFooterStyles.leftContent}>
                             <Typography sx={contactFooterStyles.contactHeading}>
                                 LET'S BUILD
                                 <br />
@@ -331,15 +330,15 @@ export const ContactFooterSection: React.FC = () => {
                             </Typography>
 
                             {/* Feature Tags */}
-                            <AnyBox sx={contactFooterStyles.featureTags}>
+                            <Box sx={contactFooterStyles.featureTags}>
                                 <Typography sx={contactFooterStyles.featureTag}>Future</Typography>
                                 <Typography sx={contactFooterStyles.featureTag}>Modern</Typography>
                                 <Typography sx={contactFooterStyles.featureTag}>Elegance</Typography>
-                            </AnyBox>
-                        </AnyBox>
+                            </Box>
+                        </Box>
 
                         {/* Right Content - Contact Form */}
-                        <AnyBox sx={contactFooterStyles.formContainer}>
+                        <Box sx={contactFooterStyles.formContainer}>
                             <TextField
                                 fullWidth
                                 variant='standard'
@@ -371,21 +370,21 @@ export const ContactFooterSection: React.FC = () => {
                                 Send Message
                                 <ArrowOutwardIcon />
                             </Button>
-                        </AnyBox>
-                    </AnyBox>
-                </AnyBox>
-            </AnyBox>
+                        </Box>
+                    </Box>
+                </Box>
+            </Box>
 
             {/* Brand Watermark Section */}
-            <AnyBox sx={contactFooterStyles.brandSection}>
+            <Box sx={contactFooterStyles.brandSection}>
                 <Typography sx={contactFooterStyles.brandText}>PREMIER</Typography>
-            </AnyBox>
+            </Box>
 
             {/* Footer Section */}
-            <AnyBox sx={contactFooterStyles.footerSection}>
-                <AnyBox sx={contactFooterStyles.footerGrid}>
+            <Box sx={contactFooterStyles.footerSection}>
+                <Box sx={contactFooterStyles.footerGrid}>
                     {/* Newsletter Column */}
-                    <AnyBox>
+                    <Box>
                         <Typography sx={contactFooterStyles.newsletterHeading}>
                             BE AMONG THE FIRST TO EXPLORE OUR FUTURE.
                         </Typography>
@@ -395,14 +394,14 @@ export const ContactFooterSection: React.FC = () => {
                             sx={contactFooterStyles.newsletterInput}
                             InputProps={{
                                 endAdornment: (
-                                    <ArrowForwardIcon sx={{ color: '#2D2D2D', fontSize: '20px', cursor: 'pointer' }} />
+                                    <ArrowForwardIcon sx={{ color: '#FFFFFF', fontSize: '20px', cursor: 'pointer' }} />
                                 ),
                             }}
                         />
-                    </AnyBox>
+                    </Box>
 
                     {/* Social Media Column */}
-                    <AnyBox sx={contactFooterStyles.socialIcons}>
+                    <Box sx={contactFooterStyles.socialIcons}>
                         <IconButton sx={contactFooterStyles.socialIcon}>
                             <FacebookOutlinedIcon />
                         </IconButton>
@@ -412,42 +411,51 @@ export const ContactFooterSection: React.FC = () => {
                         <IconButton sx={contactFooterStyles.socialIcon}>
                             <XIcon />
                         </IconButton>
-                    </AnyBox>
+                    </Box>
 
                     {/* Navigation Links Column */}
-                    <AnyBox sx={contactFooterStyles.navLinks}>
+                    <Box sx={contactFooterStyles.navLinks}>
                         <Typography sx={contactFooterStyles.navLink}>Home</Typography>
                         <Typography sx={contactFooterStyles.navLink}>About us</Typography>
                         <Typography sx={contactFooterStyles.navLink}>Services</Typography>
                         <Typography sx={contactFooterStyles.navLink}>Portfolio</Typography>
                         <Typography sx={contactFooterStyles.navLink}>Contacts</Typography>
-                    </AnyBox>
+                    </Box>
 
                     {/* Contact Info Column */}
-                    <AnyBox sx={contactFooterStyles.contactInfo}>
+                    <Box sx={contactFooterStyles.contactInfo}>
                         <Typography sx={contactFooterStyles.contactText}>
-                            +880 1234 567 890
+                            House- 5/10 Block- E, Lalmatia
                         </Typography>
                         <Typography sx={contactFooterStyles.contactText}>
-                            premier@housing.com
+                            Dhaka, Bangladesh
                         </Typography>
-                    </AnyBox>
-                </AnyBox>
-            </AnyBox>
+                        <Typography sx={{ ...contactFooterStyles.contactText, mt: 1.5 }}>
+                            01730-312576, 01730312577
+                        </Typography>
+                        <Typography sx={contactFooterStyles.contactText}>
+                            info@premierhousingltd.com
+                        </Typography>
+                        <Typography sx={contactFooterStyles.contactText}>
+                            premier.housing95@gmail.com
+                        </Typography>
+                    </Box>
+                </Box>
+            </Box>
 
             {/* Bottom Bar */}
-            <AnyBox sx={contactFooterStyles.bottomBar}>
-                <AnyBox sx={contactFooterStyles.bottomContent}>
+            <Box sx={contactFooterStyles.bottomBar}>
+                <Box sx={contactFooterStyles.bottomContent}>
                     <Typography sx={contactFooterStyles.copyright}>
                         © 2025 PREMIER. All rights reserved.
                     </Typography>
 
-                    <AnyBox sx={contactFooterStyles.bottomLinks}>
+                    <Box sx={contactFooterStyles.bottomLinks}>
                         <Typography sx={contactFooterStyles.bottomLink}>Privacy Policy</Typography>
                         <Typography sx={contactFooterStyles.bottomLink}>Terms of Use</Typography>
-                    </AnyBox>
-                </AnyBox>
-            </AnyBox>
+                    </Box>
+                </Box>
+            </Box>
         </>
     );
 };

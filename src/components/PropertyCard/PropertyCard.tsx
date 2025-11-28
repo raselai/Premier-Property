@@ -20,9 +20,6 @@ import BathtubIcon from '@mui/icons-material/Bathtub';
 import SquareFootIcon from '@mui/icons-material/SquareFoot';
 import type { SxProps, Theme } from '@mui/material';
 
-// Helper to bypass MUI type limitations
-const AnyBox = Box as any;
-
 const cardStyles: Record<string, SxProps<Theme>> = {
     card: {
         height: '100%',
@@ -127,48 +124,46 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
 
     return (
         <Card sx={cardStyles.card}>
-            <AnyBox sx={cardStyles.media}>
+            <Box sx={cardStyles.media}>
                 <CardMedia
-                    {...({
-                        component: 'img',
-                        image,
-                        alt: title,
-                        sx: { height: '240px' },
-                    } as any)}
+                    component='img'
+                    height='240'
+                    image={image}
+                    alt={title}
                 />
                 <Chip label={status} sx={cardStyles.statusChip} />
-            </AnyBox>
+            </Box>
 
             <CardContent sx={cardStyles.content}>
                 <Typography variant='h5' sx={cardStyles.title}>
                     {title}
                 </Typography>
 
-                <AnyBox sx={cardStyles.location}>
+                <Box sx={cardStyles.location}>
                     <LocationOnIcon fontSize='small' />
                     <Typography variant='body2' sx={{ fontFamily: 'Montserrat, sans-serif' }}>
                         {location}
                     </Typography>
-                </AnyBox>
+                </Box>
 
                 <Typography sx={cardStyles.price}>
                     {formattedPrice}
                 </Typography>
 
-                <AnyBox sx={cardStyles.features}>
-                    <AnyBox sx={cardStyles.feature}>
+                <Box sx={cardStyles.features}>
+                    <Box sx={cardStyles.feature}>
                         <BedIcon fontSize='small' />
                         <span>{bedrooms} Beds</span>
-                    </AnyBox>
-                    <AnyBox sx={cardStyles.feature}>
+                    </Box>
+                    <Box sx={cardStyles.feature}>
                         <BathtubIcon fontSize='small' />
                         <span>{bathrooms} Baths</span>
-                    </AnyBox>
-                    <AnyBox sx={cardStyles.feature}>
+                    </Box>
+                    <Box sx={cardStyles.feature}>
                         <SquareFootIcon fontSize='small' />
                         <span>{area.toLocaleString()} sqft</span>
-                    </AnyBox>
-                </AnyBox>
+                    </Box>
+                </Box>
             </CardContent>
 
             <CardActions sx={cardStyles.actions}>

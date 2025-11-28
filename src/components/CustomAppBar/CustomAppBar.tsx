@@ -14,7 +14,6 @@ import {
     MenuItem,
     Drawer,
     List,
-    ListItem,
     ListItemButton,
     ListItemText,
     Collapse,
@@ -74,146 +73,249 @@ const navigationItems: NavigationItem[] = [
 
 const appBarStyles: Record<string, SxProps<Theme>> = {
     appBar: {
-        backgroundColor: 'transparent',
-        backdropFilter: 'blur(10px)',
-        boxShadow: 'none',
-        borderBottom: 'none',
+        backgroundColor: 'rgba(26, 26, 26, 0.95)',
+        backdropFilter: 'blur(20px)',
+        boxShadow: '0 2px 24px rgba(206, 148, 67, 0.08)',
+        borderBottom: '1px solid rgba(206, 148, 67, 0.15)',
         position: 'fixed',
         top: 0,
         left: 0,
         right: 0,
         zIndex: 1100,
+        transition: 'all 0.3s ease',
     },
     toolbar: {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        px: { xs: 2, md: 4 },
-        py: 1.5,
+        px: { xs: 2, sm: 3, md: 4, lg: 6 },
+        py: { xs: 1.5, md: 2 },
+        minHeight: { xs: '64px', md: '80px' },
     },
     logo: {
-        height: { xs: '40px', md: '50px' },
+        height: { xs: '45px', md: '55px', lg: '60px' },
         cursor: 'pointer',
+        transition: 'transform 0.3s ease, filter 0.3s ease',
+        filter: 'brightness(1.05) contrast(1.1)',
+        '&:hover': {
+            transform: 'scale(1.05)',
+            filter: 'brightness(1.1) contrast(1.15)',
+        },
     },
     navContainer: {
         display: { xs: 'none', lg: 'flex' },
         alignItems: 'center',
-        gap: 1.5,
+        gap: 0.5,
     },
     navButton: {
-        fontFamily: 'Montserrat, sans-serif',
-        fontSize: '0.95rem',
-        fontWeight: 500,
+        fontFamily: 'Gilroy, sans-serif',
+        fontSize: { lg: '0.875rem', xl: '0.95rem' },
+        fontWeight: 600,
         color: '#FFFFFF',
         textTransform: 'none',
-        borderRadius: '999px',
-        px: 3,
-        py: 1,
-        border: '1px solid rgba(255, 255, 255, 0.3)',
+        letterSpacing: '0.03em',
+        borderRadius: '8px',
+        px: { lg: 2, xl: 2.5 },
+        py: 1.25,
+        position: 'relative',
         backgroundColor: 'transparent',
-        transition: 'all 0.3s ease',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        '&::before': {
+            content: '""',
+            position: 'absolute',
+            bottom: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 0,
+            height: '2px',
+            background: 'linear-gradient(90deg, transparent, #CE9443, transparent)',
+            transition: 'width 0.3s ease',
+        },
         '&:hover': {
-            backgroundColor: '#FFFFFF',
-            borderColor: '#FFFFFF',
-            color: '#1A1A1A',
+            backgroundColor: 'rgba(206, 148, 67, 0.12)',
+            color: '#CE9443',
+            transform: 'translateY(-1px)',
+            '&::before': {
+                width: '80%',
+            },
         },
     },
     rightIcons: {
         display: 'flex',
         alignItems: 'center',
-        gap: 1.5,
+        gap: { xs: 1, md: 1.5 },
     },
     socialIcon: {
-        width: 40,
-        height: 40,
-        border: '1px solid rgba(255, 255, 255, 0.3)',
+        width: { xs: 36, md: 40 },
+        height: { xs: 36, md: 40 },
+        border: '1.5px solid rgba(206, 148, 67, 0.4)',
         borderRadius: '50%',
         backgroundColor: 'transparent',
-        color: '#FFFFFF',
-        transition: 'all 0.3s ease',
+        color: '#CE9443',
+        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+        display: { xs: 'none', sm: 'flex' },
         '&:hover': {
-            backgroundColor: '#D4AF37',
+            backgroundColor: '#CE9443',
             color: '#1A1A1A',
-            borderColor: '#D4AF37',
+            borderColor: '#CE9443',
+            transform: 'translateY(-3px) scale(1.05)',
+            boxShadow: '0 8px 20px rgba(206, 148, 67, 0.35)',
         },
     },
     consultButton: {
-        fontFamily: 'Montserrat, sans-serif',
-        fontSize: '0.95rem',
-        fontWeight: 600,
-        color: '#1A1A1A',
-        textTransform: 'none',
-        borderRadius: '999px',
-        px: 3,
-        py: 1,
-        backgroundColor: '#FFFFFF',
-        border: '1px solid rgba(255, 255, 255, 0.3)',
-        boxShadow: '0 4px 12px rgba(255, 255, 255, 0.3)',
+        fontFamily: 'Gilroy, sans-serif',
+        fontSize: { xs: '0.875rem', md: '0.95rem' },
+        fontWeight: 700,
+        color: '#FFFFFF',
+        textTransform: 'uppercase',
+        letterSpacing: '0.08em',
+        borderRadius: '8px',
+        px: { xs: 2.5, md: 3.5 },
+        py: { xs: 1.25, md: 1.5 },
+        background: 'linear-gradient(135deg, #CE9443 0%, #E5B864 100%)',
+        border: 'none',
+        boxShadow: '0 4px 16px rgba(206, 148, 67, 0.4)',
         display: { xs: 'none', md: 'flex' },
         gap: 1,
-        transition: 'all 0.3s ease',
+        position: 'relative',
+        overflow: 'hidden',
+        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+        '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: '-100%',
+            width: '100%',
+            height: '100%',
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+            transition: 'left 0.5s ease',
+        },
         '&:hover': {
-            backgroundColor: 'rgba(255, 255, 255, 0.9)',
-            borderColor: '#FFFFFF',
-            color: '#1A1A1A',
-            boxShadow: '0 6px 16px rgba(255, 255, 255, 0.5)',
+            background: 'linear-gradient(135deg, #E5B864 0%, #CE9443 100%)',
+            transform: 'translateY(-2px) scale(1.02)',
+            boxShadow: '0 8px 24px rgba(206, 148, 67, 0.5)',
+            '&::before': {
+                left: '100%',
+            },
+        },
+        '&:active': {
+            transform: 'translateY(0) scale(0.98)',
         },
     },
     mobileMenuButton: {
-        display: { xs: 'block', lg: 'none' },
-        width: 40,
-        height: 40,
-        border: '1px solid rgba(255, 255, 255, 0.3)',
-        borderRadius: '50%',
-        color: '#FFFFFF',
+        display: { xs: 'flex', lg: 'none' },
+        width: { xs: 40, md: 44 },
+        height: { xs: 40, md: 44 },
+        border: '1.5px solid rgba(206, 148, 67, 0.5)',
+        borderRadius: '8px',
+        backgroundColor: 'rgba(206, 148, 67, 0.1)',
+        color: '#CE9443',
+        transition: 'all 0.3s ease',
+        '&:hover': {
+            backgroundColor: 'rgba(206, 148, 67, 0.2)',
+            borderColor: '#CE9443',
+            transform: 'scale(1.05)',
+        },
     },
     drawer: {
         '& .MuiDrawer-paper': {
-            width: 280,
-            backgroundColor: '#FFFFFF',
-            pt: 2,
+            width: 320,
+            backgroundColor: '#1A1A1A',
+            backgroundImage: 'linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(45, 45, 45, 0.95) 100%)',
+            borderLeft: '1px solid rgba(206, 148, 67, 0.2)',
+            pt: 3,
+            px: 2,
         },
     },
     drawerItem: {
-        fontFamily: 'Montserrat, sans-serif',
-        color: '#1A1A1A',
+        fontFamily: 'Gilroy, sans-serif',
+        fontWeight: 600,
+        color: '#FFFFFF',
+        borderRadius: '8px',
+        mb: 0.5,
+        py: 1.5,
+        transition: 'all 0.3s ease',
         '&:hover': {
-            backgroundColor: 'rgba(212, 175, 55, 0.1)',
+            backgroundColor: 'rgba(206, 148, 67, 0.12)',
+            color: '#CE9443',
+            transform: 'translateX(4px)',
         },
     },
     submenuItem: {
         pl: 4,
         fontFamily: 'Montserrat, sans-serif',
         fontSize: '0.9rem',
-        color: '#666',
+        fontWeight: 500,
+        color: 'rgba(255, 255, 255, 0.7)',
+        borderRadius: '8px',
+        py: 1.25,
+        transition: 'all 0.3s ease',
         '&:hover': {
-            backgroundColor: 'rgba(212, 175, 55, 0.1)',
-            color: '#D4AF37',
+            backgroundColor: 'rgba(206, 148, 67, 0.08)',
+            color: '#CE9443',
+            transform: 'translateX(6px)',
         },
     },
     menu: {
         '& .MuiPaper-root': {
             borderRadius: '12px',
-            border: '1px solid rgba(212, 175, 55, 0.2)',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-            mt: 1,
+            backgroundColor: 'rgba(26, 26, 26, 0.98)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(206, 148, 67, 0.25)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(206, 148, 67, 0.1)',
+            mt: 1.5,
+            overflow: 'hidden',
         },
     },
     menuItem: {
         fontFamily: 'Montserrat, sans-serif',
         fontSize: '0.9rem',
-        color: '#1A1A1A',
-        py: 1.5,
-        px: 2.5,
+        fontWeight: 500,
+        color: '#FFFFFF',
+        py: 1.75,
+        px: 3,
+        transition: 'all 0.3s ease',
+        position: 'relative',
+        '&::before': {
+            content: '""',
+            position: 'absolute',
+            left: 0,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: '3px',
+            height: 0,
+            backgroundColor: '#CE9443',
+            transition: 'height 0.3s ease',
+        },
         '&:hover': {
-            backgroundColor: 'rgba(212, 175, 55, 0.1)',
-            color: '#D4AF37',
+            backgroundColor: 'rgba(206, 148, 67, 0.12)',
+            color: '#CE9443',
+            paddingLeft: '28px',
+            '&::before': {
+                height: '70%',
+            },
+        },
+    },
+    drawerConsultButton: {
+        fontFamily: 'Gilroy, sans-serif',
+        fontSize: '0.95rem',
+        fontWeight: 700,
+        color: '#FFFFFF',
+        textTransform: 'uppercase',
+        letterSpacing: '0.08em',
+        borderRadius: '8px',
+        px: 3,
+        py: 1.5,
+        background: 'linear-gradient(135deg, #CE9443 0%, #E5B864 100%)',
+        boxShadow: '0 4px 16px rgba(206, 148, 67, 0.4)',
+        transition: 'all 0.3s ease',
+        '&:hover': {
+            background: 'linear-gradient(135deg, #E5B864 0%, #CE9443 100%)',
+            transform: 'translateY(-2px)',
+            boxShadow: '0 6px 20px rgba(206, 148, 67, 0.5)',
         },
     },
 };
-
-// Helper to bypass MUI type limitations
-const AnyBox = Box as any;
 
 export const CustomAppBar: React.FC = () => {
     const navigate = useNavigate();
@@ -248,55 +350,12 @@ export const CustomAppBar: React.FC = () => {
         window.open(urls[platform], '_blank');
     };
 
-    const renderNavItem = (item: NavigationItem): JSX.Element => {
-        if (item.submenu) {
-            return (
-                <React.Fragment key={item.label}>
-                    <Button
-                        sx={appBarStyles.navButton}
-                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleMenuOpen(e, item.label)}
-                        endIcon={<ExpandMoreIcon />}
-                    >
-                        {item.label}
-                    </Button>
-                    <Menu
-                        anchorEl={anchorEls[item.label]}
-                        open={Boolean(anchorEls[item.label])}
-                        onClose={() => handleMenuClose(item.label)}
-                        sx={appBarStyles.menu}
-                    >
-                        {item.submenu.map((subItem) => (
-                            <MenuItem
-                                key={subItem.path}
-                                onClick={() => handleNavigate(subItem.path)}
-                                sx={appBarStyles.menuItem}
-                            >
-                                {subItem.label}
-                            </MenuItem>
-                        ))}
-                    </Menu>
-                </React.Fragment>
-            );
-        }
-        return (
-            <Button
-                key={item.label}
-                sx={appBarStyles.navButton}
-                onClick={() => handleNavigate(item.path!)}
-            >
-                {item.label}
-            </Button>
-        );
-    };
-
-    const navItems = navigationItems.map((item) => renderNavItem(item));
-
     return (
         <>
             <AppBar position='fixed' elevation={0} sx={appBarStyles.appBar}>
                 <Toolbar sx={appBarStyles.toolbar}>
                     {/* Logo */}
-                    <AnyBox
+                    <Box
                         component='img'
                         src='/Logo.jpg'
                         alt='Premium Property'
@@ -305,18 +364,49 @@ export const CustomAppBar: React.FC = () => {
                     />
 
                     {/* Desktop Navigation */}
-                    <AnyBox
-                        sx={{
-                            display: { xs: 'none', lg: 'flex' },
-                            alignItems: 'center',
-                            gap: 1.5,
-                        }}
-                    >
-                        {navItems}
-                    </AnyBox>
+                    <Box sx={appBarStyles.navContainer}>
+                        {navigationItems.map((item) => (
+                            <Box key={item.label}>
+                                {item.submenu ? (
+                                    <>
+                                        <Button
+                                            sx={appBarStyles.navButton}
+                                            onClick={(e) => handleMenuOpen(e, item.label)}
+                                            endIcon={<ExpandMoreIcon />}
+                                        >
+                                            {item.label}
+                                        </Button>
+                                        <Menu
+                                            anchorEl={anchorEls[item.label]}
+                                            open={Boolean(anchorEls[item.label])}
+                                            onClose={() => handleMenuClose(item.label)}
+                                            sx={appBarStyles.menu}
+                                        >
+                                            {item.submenu.map((subItem) => (
+                                                <MenuItem
+                                                    key={subItem.path}
+                                                    onClick={() => handleNavigate(subItem.path)}
+                                                    sx={appBarStyles.menuItem}
+                                                >
+                                                    {subItem.label}
+                                                </MenuItem>
+                                            ))}
+                                        </Menu>
+                                    </>
+                                ) : (
+                                    <Button
+                                        sx={appBarStyles.navButton}
+                                        onClick={() => handleNavigate(item.path!)}
+                                    >
+                                        {item.label}
+                                    </Button>
+                                )}
+                            </Box>
+                        ))}
+                    </Box>
 
                     {/* Right Icons */}
-                    <AnyBox sx={appBarStyles.rightIcons}>
+                    <Box sx={appBarStyles.rightIcons}>
                         {/* Social Icons */}
                         <IconButton
                             sx={appBarStyles.socialIcon}
@@ -347,7 +437,7 @@ export const CustomAppBar: React.FC = () => {
                         >
                             {mobileOpen ? <CloseIcon /> : <MenuIcon />}
                         </IconButton>
-                    </AnyBox>
+                    </Box>
                 </Toolbar>
             </AppBar>
 
@@ -358,63 +448,79 @@ export const CustomAppBar: React.FC = () => {
                 onClose={() => setMobileOpen(false)}
                 sx={appBarStyles.drawer}
             >
-                <List>
-                    {navigationItems.map((item) => (
-                        <AnyBox key={item.label}>
-                            {item.submenu ? (
-                                <>
+                {/* Close Button */}
+                {/* @ts-ignore - MUI complex union type issue */}
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 1 }}>
+                    <IconButton
+                        onClick={() => setMobileOpen(false)}
+                        sx={{
+                            color: '#CE9443',
+                            marginBottom: 1,
+                            transition: 'all 0.3s ease',
+                            '&:hover': {
+                                backgroundColor: 'rgba(206, 148, 67, 0.15)',
+                                transform: 'rotate(90deg)',
+                            },
+                        }}
+                    >
+                        <CloseIcon />
+                    </IconButton>
+                </Box>
+
+                <List sx={{ flexGrow: 1 }}>
+                        {navigationItems.map((item) => (
+                            <Box key={item.label}>
+                                {item.submenu ? (
+                                    <>
+                                        <ListItemButton
+                                            sx={appBarStyles.drawerItem}
+                                            onClick={() => toggleMobileSubmenu(item.label)}
+                                        >
+                                            <ListItemText primary={item.label} />
+                                            {mobileSubmenus[item.label] ? (
+                                                <ExpandLessIcon sx={{ color: '#CE9443' }} />
+                                            ) : (
+                                                <ExpandMoreIcon sx={{ color: '#CE9443' }} />
+                                            )}
+                                        </ListItemButton>
+                                        <Collapse in={mobileSubmenus[item.label]} timeout='auto'>
+                                            <List disablePadding>
+                                                {item.submenu.map((subItem) => (
+                                                    <ListItemButton
+                                                        key={subItem.path}
+                                                        sx={appBarStyles.submenuItem}
+                                                        onClick={() => handleNavigate(subItem.path)}
+                                                    >
+                                                        <ListItemText primary={subItem.label} />
+                                                    </ListItemButton>
+                                                ))}
+                                            </List>
+                                        </Collapse>
+                                    </>
+                                ) : (
                                     <ListItemButton
                                         sx={appBarStyles.drawerItem}
-                                        onClick={() => toggleMobileSubmenu(item.label)}
+                                        onClick={() => handleNavigate(item.path!)}
                                     >
                                         <ListItemText primary={item.label} />
-                                        {mobileSubmenus[item.label] ? (
-                                            <ExpandLessIcon />
-                                        ) : (
-                                            <ExpandMoreIcon />
-                                        )}
                                     </ListItemButton>
-                                    <Collapse in={mobileSubmenus[item.label]} timeout='auto'>
-                                        <List disablePadding>
-                                            {item.submenu.map((subItem) => (
-                                                <ListItemButton
-                                                    key={subItem.path}
-                                                    sx={appBarStyles.submenuItem}
-                                                    onClick={() => handleNavigate(subItem.path)}
-                                                >
-                                                    <ListItemText primary={subItem.label} />
-                                                </ListItemButton>
-                                            ))}
-                                        </List>
-                                    </Collapse>
-                                </>
-                            ) : (
-                                <ListItemButton
-                                    sx={appBarStyles.drawerItem}
-                                    onClick={() => handleNavigate(item.path!)}
-                                >
-                                    <ListItemText primary={item.label} />
-                                </ListItemButton>
-                            )}
-                        </AnyBox>
-                    ))}
+                                )}
+                            </Box>
+                        ))}
+                    </List>
 
-                    {/* Mobile Consultation Button */}
-                    <ListItem sx={{ mt: 2 }}>
-                        <Button
-                            fullWidth
-                            variant='contained'
-                            sx={{
-                                ...appBarStyles.consultButton,
-                                display: 'flex',
-                            }}
-                            endIcon={<ArrowForwardIcon />}
-                            onClick={() => handleNavigate('/contact')}
-                        >
-                            Free Consultation
-                        </Button>
-                    </ListItem>
-                </List>
+                {/* Mobile Consultation Button */}
+                <Box sx={{ p: 2, borderTop: '1px solid rgba(206, 148, 67, 0.3)' }}>
+                    <Button
+                        fullWidth
+                        variant='contained'
+                        sx={appBarStyles.drawerConsultButton}
+                        endIcon={<ArrowForwardIcon />}
+                        onClick={() => handleNavigate('/contact')}
+                    >
+                        Free Consultation
+                    </Button>
+                </Box>
             </Drawer>
         </>
     );
