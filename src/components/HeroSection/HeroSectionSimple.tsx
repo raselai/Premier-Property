@@ -152,7 +152,6 @@ const heroStyles: Record<string, SxProps<Theme>> = {
 };
 
 export const HeroSectionSimple: React.FC<HeroSectionSimpleProps> = ({
-    title = 'Find Your Dream Home',
     subtitle = 'House and Development Ltd',
     buttonText = "Let's Talk",
     onButtonClick,

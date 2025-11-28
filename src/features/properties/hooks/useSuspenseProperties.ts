@@ -65,7 +65,6 @@ export function useSuspensePropertySearch(query: string) {
     return useSuspenseQuery<Property[], Error>({
         queryKey: ['properties', 'search', query],
         queryFn: () => propertyApi.searchByLocation(query),
-        enabled: query.length > 2,
         staleTime: 1 * 60 * 1000, // 1 minute
     });
 }

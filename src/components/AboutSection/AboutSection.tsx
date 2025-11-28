@@ -360,7 +360,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         },
     ],
 }) => {
-    const [visibleCards, setVisibleCards] = useState<number[]>([]);
+    // const [visibleCards, setVisibleCards] = useState<number[]>([]);
     const cardsRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
