@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PropertiesIndexRouteImport } from './routes/properties/index'
+import { Route as ProjectsUpcomingRouteImport } from './routes/projects/upcoming'
+import { Route as ProjectsOngoingRouteImport } from './routes/projects/ongoing'
+import { Route as ProjectsCompletedRouteImport } from './routes/projects/completed'
+import { Route as ProjectsProjectIdRouteImport } from './routes/projects/$projectId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,30 +26,85 @@ const PropertiesIndexRoute = PropertiesIndexRouteImport.update({
   path: '/properties/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsUpcomingRoute = ProjectsUpcomingRouteImport.update({
+  id: '/projects/upcoming',
+  path: '/projects/upcoming',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsOngoingRoute = ProjectsOngoingRouteImport.update({
+  id: '/projects/ongoing',
+  path: '/projects/ongoing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsCompletedRoute = ProjectsCompletedRouteImport.update({
+  id: '/projects/completed',
+  path: '/projects/completed',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
+  id: '/projects/$projectId',
+  path: '/projects/$projectId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/projects/completed': typeof ProjectsCompletedRoute
+  '/projects/ongoing': typeof ProjectsOngoingRoute
+  '/projects/upcoming': typeof ProjectsUpcomingRoute
   '/properties': typeof PropertiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/projects/completed': typeof ProjectsCompletedRoute
+  '/projects/ongoing': typeof ProjectsOngoingRoute
+  '/projects/upcoming': typeof ProjectsUpcomingRoute
   '/properties': typeof PropertiesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/projects/completed': typeof ProjectsCompletedRoute
+  '/projects/ongoing': typeof ProjectsOngoingRoute
+  '/projects/upcoming': typeof ProjectsUpcomingRoute
   '/properties/': typeof PropertiesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/properties'
+  fullPaths:
+    | '/'
+    | '/projects/$projectId'
+    | '/projects/completed'
+    | '/projects/ongoing'
+    | '/projects/upcoming'
+    | '/properties'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/properties'
-  id: '__root__' | '/' | '/properties/'
+  to:
+    | '/'
+    | '/projects/$projectId'
+    | '/projects/completed'
+    | '/projects/ongoing'
+    | '/projects/upcoming'
+    | '/properties'
+  id:
+    | '__root__'
+    | '/'
+    | '/projects/$projectId'
+    | '/projects/completed'
+    | '/projects/ongoing'
+    | '/projects/upcoming'
+    | '/properties/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
+  ProjectsCompletedRoute: typeof ProjectsCompletedRoute
+  ProjectsOngoingRoute: typeof ProjectsOngoingRoute
+  ProjectsUpcomingRoute: typeof ProjectsUpcomingRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
 }
 
@@ -65,11 +124,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PropertiesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/upcoming': {
+      id: '/projects/upcoming'
+      path: '/projects/upcoming'
+      fullPath: '/projects/upcoming'
+      preLoaderRoute: typeof ProjectsUpcomingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/ongoing': {
+      id: '/projects/ongoing'
+      path: '/projects/ongoing'
+      fullPath: '/projects/ongoing'
+      preLoaderRoute: typeof ProjectsOngoingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/completed': {
+      id: '/projects/completed'
+      path: '/projects/completed'
+      fullPath: '/projects/completed'
+      preLoaderRoute: typeof ProjectsCompletedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/$projectId': {
+      id: '/projects/$projectId'
+      path: '/projects/$projectId'
+      fullPath: '/projects/$projectId'
+      preLoaderRoute: typeof ProjectsProjectIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProjectsProjectIdRoute: ProjectsProjectIdRoute,
+  ProjectsCompletedRoute: ProjectsCompletedRoute,
+  ProjectsOngoingRoute: ProjectsOngoingRoute,
+  ProjectsUpcomingRoute: ProjectsUpcomingRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
 }
 export const routeTree = rootRouteImport

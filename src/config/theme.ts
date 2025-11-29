@@ -1,7 +1,7 @@
 /**
  * Premium Property Theme Configuration
  * Fonts: Gilroy (titles), Montserrat (text)
- * Colors: Gold (#D4AF37), Dark (#1A1A1A), Grey (#8B8B8B)
+ * Colors: Green (#0F5132), Dark (#1A1A1A), Grey (#8B8B8B)
  */
 
 import { createTheme } from '@mui/material/styles';
@@ -9,13 +9,13 @@ import { createTheme } from '@mui/material/styles';
 // Declare custom theme properties
 declare module '@mui/material/styles' {
     interface Palette {
-        gold: Palette['primary'];
+        green: Palette['primary'];
         dark: Palette['primary'];
         brandGrey: Palette['primary'];
     }
 
     interface PaletteOptions {
-        gold?: PaletteOptions['primary'];
+        green?: PaletteOptions['primary'];
         dark?: PaletteOptions['primary'];
         brandGrey?: PaletteOptions['primary'];
     }
@@ -24,28 +24,28 @@ declare module '@mui/material/styles' {
 export const theme = createTheme({
     palette: {
         primary: {
-            main: '#D4AF37', // Gold
-            light: '#E5C158',
-            dark: '#B8941F',
+            main: '#0F5132', // Green
+            light: '#146B42',
+            dark: '#0A3A22',
             contrastText: '#1A1A1A',
         },
         secondary: {
             main: '#1A1A1A', // Dark
             light: '#2D2D2D',
             dark: '#000000',
-            contrastText: '#D4AF37',
+            contrastText: '#0F5132',
         },
-        gold: {
-            main: '#D4AF37',
-            light: '#E5C158',
-            dark: '#B8941F',
+        green: {
+            main: '#0F5132',
+            light: '#146B42',
+            dark: '#0A3A22',
             contrastText: '#1A1A1A',
         },
         dark: {
             main: '#1A1A1A',
             light: '#2D2D2D',
             dark: '#000000',
-            contrastText: '#D4AF37',
+            contrastText: '#0F5132',
         },
         brandGrey: {
             main: '#8B8B8B',
@@ -67,27 +67,27 @@ export const theme = createTheme({
         h1: {
             fontFamily: 'Gilroy, sans-serif',
             fontWeight: 700,
-            color: '#D4AF37',
+            color: '#0F5132',
             fontSize: '3.5rem',
             letterSpacing: '-0.02em',
         },
         h2: {
             fontFamily: 'Gilroy, sans-serif',
             fontWeight: 700,
-            color: '#D4AF37',
+            color: '#0F5132',
             fontSize: '2.75rem',
             letterSpacing: '-0.01em',
         },
         h3: {
             fontFamily: 'Gilroy, sans-serif',
             fontWeight: 700,
-            color: '#D4AF37',
+            color: '#0F5132',
             fontSize: '2.25rem',
         },
         h4: {
             fontFamily: 'Gilroy, sans-serif',
             fontWeight: 600,
-            color: '#D4AF37',
+            color: '#0F5132',
             fontSize: '1.875rem',
         },
         h5: {
@@ -149,17 +149,17 @@ export const theme = createTheme({
                     fontFamily: 'Gilroy, sans-serif',
                 },
                 contained: {
-                    backgroundColor: '#D4AF37',
+                    backgroundColor: '#0F5132',
                     color: '#1A1A1A',
                     '&:hover': {
-                        backgroundColor: '#B8941F',
+                        backgroundColor: '#0A3A22',
                     },
                 },
                 outlined: {
-                    borderColor: '#D4AF37',
-                    color: '#D4AF37',
+                    borderColor: '#0F5132',
+                    color: '#0F5132',
                     '&:hover': {
-                        borderColor: '#B8941F',
+                        borderColor: '#0A3A22',
                         backgroundColor: 'rgba(212, 175, 55, 0.08)',
                     },
                 },

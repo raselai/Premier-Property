@@ -50,9 +50,9 @@ const navigationItems: NavigationItem[] = [
         submenu: [
             { label: 'Ongoing Projects', path: '/projects/ongoing' },
             { label: 'Upcoming Projects', path: '/projects/upcoming' },
+            { label: 'Completed Projects', path: '/projects/completed' },
         ],
     },
-    { label: 'Completed Projects', path: '/projects/completed' },
     {
         label: 'Landowner Solutions',
         submenu: [
@@ -73,10 +73,10 @@ const navigationItems: NavigationItem[] = [
 
 const appBarStyles: Record<string, SxProps<Theme>> = {
     appBar: {
-        backgroundColor: 'rgba(26, 26, 26, 0.95)',
+        backgroundColor: 'rgba(15, 81, 50, 0.95)',
         backdropFilter: 'blur(20px)',
-        boxShadow: '0 2px 24px rgba(206, 148, 67, 0.08)',
-        borderBottom: '1px solid rgba(206, 148, 67, 0.15)',
+        boxShadow: '0 2px 24px rgba(15, 81, 50, 0.08)',
+        borderBottom: '1px solid rgba(15, 81, 50, 0.15)',
         position: 'fixed',
         top: 0,
         left: 0,
@@ -128,12 +128,12 @@ const appBarStyles: Record<string, SxProps<Theme>> = {
             transform: 'translateX(-50%)',
             width: 0,
             height: '2px',
-            background: 'linear-gradient(90deg, transparent, #CE9443, transparent)',
+            background: 'linear-gradient(90deg, transparent, #FFFFFF, transparent)',
             transition: 'width 0.3s ease',
         },
         '&:hover': {
-            backgroundColor: 'rgba(206, 148, 67, 0.12)',
-            color: '#CE9443',
+            backgroundColor: 'rgba(255, 255, 255, 0.12)',
+            color: '#FFFFFF',
             transform: 'translateY(-1px)',
             '&::before': {
                 width: '80%',
@@ -148,33 +148,33 @@ const appBarStyles: Record<string, SxProps<Theme>> = {
     socialIcon: {
         width: { xs: 36, md: 40 },
         height: { xs: 36, md: 40 },
-        border: '1.5px solid rgba(206, 148, 67, 0.4)',
+        border: '1.5px solid rgba(255, 255, 255, 0.4)',
         borderRadius: '50%',
         backgroundColor: 'transparent',
-        color: '#CE9443',
+        color: '#FFFFFF',
         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
         display: { xs: 'none', sm: 'flex' },
         '&:hover': {
-            backgroundColor: '#CE9443',
-            color: '#1A1A1A',
-            borderColor: '#CE9443',
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
+            borderColor: '#FFFFFF',
             transform: 'translateY(-3px) scale(1.05)',
-            boxShadow: '0 8px 20px rgba(206, 148, 67, 0.35)',
+            boxShadow: '0 8px 20px rgba(255, 255, 255, 0.35)',
         },
     },
     consultButton: {
         fontFamily: 'Gilroy, sans-serif',
         fontSize: { xs: '0.875rem', md: '0.95rem' },
         fontWeight: 700,
-        color: '#FFFFFF',
+        color: '#0F5132',
         textTransform: 'uppercase',
         letterSpacing: '0.08em',
         borderRadius: '8px',
         px: { xs: 2.5, md: 3.5 },
         py: { xs: 1.25, md: 1.5 },
-        background: 'linear-gradient(135deg, #CE9443 0%, #E5B864 100%)',
+        background: '#FFFFFF',
         border: 'none',
-        boxShadow: '0 4px 16px rgba(206, 148, 67, 0.4)',
+        boxShadow: '0 4px 16px rgba(255, 255, 255, 0.3)',
         display: { xs: 'none', md: 'flex' },
         gap: 1,
         position: 'relative',
@@ -187,13 +187,13 @@ const appBarStyles: Record<string, SxProps<Theme>> = {
             left: '-100%',
             width: '100%',
             height: '100%',
-            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+            background: 'linear-gradient(90deg, transparent, rgba(15, 81, 50, 0.1), transparent)',
             transition: 'left 0.5s ease',
         },
         '&:hover': {
-            background: 'linear-gradient(135deg, #E5B864 0%, #CE9443 100%)',
+            background: '#F5F5F5',
             transform: 'translateY(-2px) scale(1.02)',
-            boxShadow: '0 8px 24px rgba(206, 148, 67, 0.5)',
+            boxShadow: '0 8px 24px rgba(255, 255, 255, 0.5)',
             '&::before': {
                 left: '100%',
             },
@@ -206,23 +206,23 @@ const appBarStyles: Record<string, SxProps<Theme>> = {
         display: { xs: 'flex', lg: 'none' },
         width: { xs: 40, md: 44 },
         height: { xs: 40, md: 44 },
-        border: '1.5px solid rgba(206, 148, 67, 0.5)',
+        border: '1.5px solid rgba(255, 255, 255, 0.5)',
         borderRadius: '8px',
-        backgroundColor: 'rgba(206, 148, 67, 0.1)',
-        color: '#CE9443',
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        color: '#FFFFFF',
         transition: 'all 0.3s ease',
         '&:hover': {
-            backgroundColor: 'rgba(206, 148, 67, 0.2)',
-            borderColor: '#CE9443',
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            borderColor: '#FFFFFF',
             transform: 'scale(1.05)',
         },
     },
     drawer: {
         '& .MuiDrawer-paper': {
             width: 320,
-            backgroundColor: '#1A1A1A',
-            backgroundImage: 'linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(45, 45, 45, 0.95) 100%)',
-            borderLeft: '1px solid rgba(206, 148, 67, 0.2)',
+            backgroundColor: '#0F5132',
+            backgroundImage: 'linear-gradient(135deg, rgba(15, 81, 50, 0.98) 0%, rgba(20, 100, 65, 0.95) 100%)',
+            borderLeft: '1px solid rgba(15, 81, 50, 0.2)',
             pt: 3,
             px: 2,
         },
@@ -236,8 +236,8 @@ const appBarStyles: Record<string, SxProps<Theme>> = {
         py: 1.5,
         transition: 'all 0.3s ease',
         '&:hover': {
-            backgroundColor: 'rgba(206, 148, 67, 0.12)',
-            color: '#CE9443',
+            backgroundColor: 'rgba(255, 255, 255, 0.12)',
+            color: '#FFFFFF',
             transform: 'translateX(4px)',
         },
     },
@@ -246,23 +246,23 @@ const appBarStyles: Record<string, SxProps<Theme>> = {
         fontFamily: 'Montserrat, sans-serif',
         fontSize: '0.9rem',
         fontWeight: 500,
-        color: 'rgba(255, 255, 255, 0.7)',
+        color: 'rgba(255, 255, 255, 0.85)',
         borderRadius: '8px',
         py: 1.25,
         transition: 'all 0.3s ease',
         '&:hover': {
-            backgroundColor: 'rgba(206, 148, 67, 0.08)',
-            color: '#CE9443',
+            backgroundColor: 'rgba(255, 255, 255, 0.08)',
+            color: '#FFFFFF',
             transform: 'translateX(6px)',
         },
     },
     menu: {
         '& .MuiPaper-root': {
             borderRadius: '12px',
-            backgroundColor: 'rgba(26, 26, 26, 0.98)',
+            backgroundColor: 'rgba(15, 81, 50, 0.98)',
             backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(206, 148, 67, 0.25)',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(206, 148, 67, 0.1)',
+            border: '1px solid rgba(15, 81, 50, 0.25)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(15, 81, 50, 0.1)',
             mt: 1.5,
             overflow: 'hidden',
         },
@@ -284,12 +284,12 @@ const appBarStyles: Record<string, SxProps<Theme>> = {
             transform: 'translateY(-50%)',
             width: '3px',
             height: 0,
-            backgroundColor: '#CE9443',
+            backgroundColor: '#FFFFFF',
             transition: 'height 0.3s ease',
         },
         '&:hover': {
-            backgroundColor: 'rgba(206, 148, 67, 0.12)',
-            color: '#CE9443',
+            backgroundColor: 'rgba(255, 255, 255, 0.12)',
+            color: '#FFFFFF',
             paddingLeft: '28px',
             '&::before': {
                 height: '70%',
@@ -300,19 +300,19 @@ const appBarStyles: Record<string, SxProps<Theme>> = {
         fontFamily: 'Gilroy, sans-serif',
         fontSize: '0.95rem',
         fontWeight: 700,
-        color: '#FFFFFF',
+        color: '#0F5132',
         textTransform: 'uppercase',
         letterSpacing: '0.08em',
         borderRadius: '8px',
         px: 3,
         py: 1.5,
-        background: 'linear-gradient(135deg, #CE9443 0%, #E5B864 100%)',
-        boxShadow: '0 4px 16px rgba(206, 148, 67, 0.4)',
+        background: '#FFFFFF',
+        boxShadow: '0 4px 16px rgba(255, 255, 255, 0.3)',
         transition: 'all 0.3s ease',
         '&:hover': {
-            background: 'linear-gradient(135deg, #E5B864 0%, #CE9443 100%)',
+            background: '#F5F5F5',
             transform: 'translateY(-2px)',
-            boxShadow: '0 6px 20px rgba(206, 148, 67, 0.5)',
+            boxShadow: '0 6px 20px rgba(255, 255, 255, 0.5)',
         },
     },
 };
@@ -454,11 +454,11 @@ export const CustomAppBar: React.FC = () => {
                     <IconButton
                         onClick={() => setMobileOpen(false)}
                         sx={{
-                            color: '#CE9443',
+                            color: '#FFFFFF',
                             marginBottom: 1,
                             transition: 'all 0.3s ease',
                             '&:hover': {
-                                backgroundColor: 'rgba(206, 148, 67, 0.15)',
+                                backgroundColor: 'rgba(255, 255, 255, 0.15)',
                                 transform: 'rotate(90deg)',
                             },
                         }}
@@ -476,11 +476,18 @@ export const CustomAppBar: React.FC = () => {
                                             sx={appBarStyles.drawerItem}
                                             onClick={() => toggleMobileSubmenu(item.label)}
                                         >
-                                            <ListItemText primary={item.label} />
+                                            <ListItemText
+                                                primary={item.label}
+                                                sx={{
+                                                    '& .MuiListItemText-primary': {
+                                                        color: '#FFFFFF',
+                                                    }
+                                                }}
+                                            />
                                             {mobileSubmenus[item.label] ? (
-                                                <ExpandLessIcon sx={{ color: '#CE9443' }} />
+                                                <ExpandLessIcon sx={{ color: '#FFFFFF' }} />
                                             ) : (
-                                                <ExpandMoreIcon sx={{ color: '#CE9443' }} />
+                                                <ExpandMoreIcon sx={{ color: '#FFFFFF' }} />
                                             )}
                                         </ListItemButton>
                                         <Collapse in={mobileSubmenus[item.label]} timeout='auto'>
@@ -491,7 +498,14 @@ export const CustomAppBar: React.FC = () => {
                                                         sx={appBarStyles.submenuItem}
                                                         onClick={() => handleNavigate(subItem.path)}
                                                     >
-                                                        <ListItemText primary={subItem.label} />
+                                                        <ListItemText
+                                                            primary={subItem.label}
+                                                            sx={{
+                                                                '& .MuiListItemText-primary': {
+                                                                    color: '#FFFFFF',
+                                                                }
+                                                            }}
+                                                        />
                                                     </ListItemButton>
                                                 ))}
                                             </List>
@@ -502,7 +516,14 @@ export const CustomAppBar: React.FC = () => {
                                         sx={appBarStyles.drawerItem}
                                         onClick={() => handleNavigate(item.path!)}
                                     >
-                                        <ListItemText primary={item.label} />
+                                        <ListItemText
+                                            primary={item.label}
+                                            sx={{
+                                                '& .MuiListItemText-primary': {
+                                                    color: '#FFFFFF',
+                                                }
+                                            }}
+                                        />
                                     </ListItemButton>
                                 )}
                             </Box>
@@ -510,7 +531,7 @@ export const CustomAppBar: React.FC = () => {
                     </List>
 
                 {/* Mobile Consultation Button */}
-                <Box sx={{ p: 2, borderTop: '1px solid rgba(206, 148, 67, 0.3)' }}>
+                <Box sx={{ p: 2, borderTop: '1px solid rgba(15, 81, 50, 0.3)' }}>
                     <Button
                         fullWidth
                         variant='contained'
