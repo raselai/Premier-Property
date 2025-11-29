@@ -16,15 +16,21 @@ const testimonialsStyles: Record<string, SxProps<Theme>> = {
     },
     sectionLabel: {
         display: 'inline-block',
-        border: '1px solid #2D2D2D',
+        backgroundColor: '#0F5132',
+        border: '1px solid #0F5132',
         borderRadius: '20px',
         padding: '8px 16px',
         fontFamily: 'Montserrat, sans-serif',
         fontSize: { xs: '12px', md: '13px' },
-        color: '#2D2D2D',
+        color: '#FFFFFF',
         fontWeight: 400,
         mb: 3,
         textAlign: 'center',
+        transition: 'all 0.3s ease',
+        '&:hover': {
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
+        },
     },
     heading: {
         fontFamily: 'Gilroy, sans-serif',
@@ -38,7 +44,7 @@ const testimonialsStyles: Record<string, SxProps<Theme>> = {
         color: '#2D2D2D',
     },
     headingGold: {
-        color: '#CE9443',
+        color: '#0F5132',
     },
     testimonialCard: {
         backgroundColor: '#FFFFFF',
@@ -54,7 +60,7 @@ const testimonialsStyles: Record<string, SxProps<Theme>> = {
         top: { xs: 20, md: 30 },
         left: { xs: 20, md: 30 },
         fontSize: { xs: '40px', md: '60px' },
-        color: '#CE9443',
+        color: '#0F5132',
         opacity: 0.3,
     },
     testimonialText: {
@@ -79,7 +85,7 @@ const testimonialsStyles: Record<string, SxProps<Theme>> = {
         height: { xs: '80px', md: '100px' },
         borderRadius: '50%',
         objectFit: 'cover',
-        border: '3px solid #CE9443',
+        border: '3px solid #0F5132',
     },
     reviewerInfo: {
         textAlign: { xs: 'center', sm: 'left' },
@@ -94,7 +100,7 @@ const testimonialsStyles: Record<string, SxProps<Theme>> = {
     reviewerTitle: {
         fontFamily: 'Montserrat, sans-serif',
         fontSize: { xs: '14px', md: '16px' },
-        color: '#CE9443',
+        color: '#0F5132',
         fontWeight: 500,
     },
 };

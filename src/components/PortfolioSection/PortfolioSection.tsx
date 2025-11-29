@@ -7,6 +7,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import { useNavigate } from '@tanstack/react-router';
 
 const portfolioStyles: Record<string, SxProps<Theme>> = {
     section: {
@@ -16,14 +17,20 @@ const portfolioStyles: Record<string, SxProps<Theme>> = {
     },
     sectionLabel: {
         display: 'inline-block',
-        border: '1px solid #979797',
+        backgroundColor: '#0F5132',
+        border: '1px solid #0F5132',
         borderRadius: '20px',
         padding: '8px 16px',
         fontFamily: 'Montserrat, sans-serif',
         fontSize: { xs: '12px', md: '13px' },
-        color: '#979797',
+        color: '#FFFFFF',
         fontWeight: 400,
         mb: { xs: 2, md: 3 },
+        transition: 'all 0.3s ease',
+        '&:hover': {
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
+        },
     },
     heading: {
         fontFamily: 'Gilroy, sans-serif',
@@ -39,7 +46,7 @@ const portfolioStyles: Record<string, SxProps<Theme>> = {
         color: '#2D2D2D',
     },
     headingGold: {
-        color: '#CE9443',
+        color: '#0F5132',
     },
     filterRow: {
         display: 'flex',
@@ -59,12 +66,14 @@ const portfolioStyles: Record<string, SxProps<Theme>> = {
         width: '45px',
         height: '45px',
         borderRadius: '50%',
-        border: '1px solid #979797',
-        backgroundColor: 'transparent',
-        color: '#2D2D2D',
+        border: '1px solid #0F5132',
+        backgroundColor: '#0F5132',
+        color: '#FFFFFF',
+        transition: 'all 0.3s ease',
         '&:hover': {
-            backgroundColor: 'rgba(45, 45, 45, 0.05)',
-            borderColor: '#2D2D2D',
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
+            borderColor: '#0F5132',
         },
     },
     filterTab: {
@@ -80,13 +89,13 @@ const portfolioStyles: Record<string, SxProps<Theme>> = {
         whiteSpace: 'nowrap',
         transition: 'all 0.3s ease',
         '&:hover': {
-            borderColor: '#2D2D2D',
-            backgroundColor: 'rgba(45, 45, 45, 0.02)',
+            borderColor: '#0F5132',
+            backgroundColor: 'rgba(15, 81, 50, 0.05)',
         },
         '&.active': {
-            backgroundColor: '#2D2D2D',
+            backgroundColor: '#0F5132',
             color: '#FFFFFF',
-            borderColor: '#2D2D2D',
+            borderColor: '#0F5132',
         },
     },
     carouselContainer: {
@@ -208,6 +217,7 @@ interface Project {
     image: string;
     category: string;
     label?: string;
+    location?: string;
 }
 
 interface PortfolioSectionProps {
@@ -216,55 +226,83 @@ interface PortfolioSectionProps {
 
 export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
     projects = [
+        // HANDOVER PROJECTS
         {
             id: 1,
-            title: "PRIVATE RESIDENCE 'HORIZON'",
-            description: 'A futuristic villa with panoramic glazing and eco-friendly design solutions.',
-            image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800',
-            category: 'HOUSE DESIGN',
+            title: 'AROZA HOME',
+            description: 'Completed residential project delivering modern living spaces with quality finishes and thoughtful design.',
+            image: '/Projects/Handover/Aroza Home, Uttara.jpg',
+            category: 'HANDOVER',
+            location: 'Uttara',
         },
         {
             id: 2,
-            title: "OFFICE SPACE 'NOVA'",
-            description: 'Minimalist design for a workspace that inspires productivity and innovation.',
-            image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800',
-            category: 'INTERIOR DESIGN',
-            label: 'NOVA',
+            title: 'PREMIER ISHAQUE GARDEN',
+            description: 'Exclusive residential project in the heart of Gulshan, combining luxury with comfortable living.',
+            image: '/Projects/Handover/Premier Ishaque Garden, Niketon, Gulshan.jpg',
+            category: 'HANDOVER',
+            location: 'Niketon, Gulshan',
         },
         {
             id: 3,
-            title: "RESIDENTIAL COMPLEX 'SKYLINE'",
-            description: 'A conceptual project combining comfort, density, and green zones.',
-            image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800',
-            category: 'PUBLIC SPACES',
+            title: 'PRIME RAIYAN',
+            description: 'Premium residential development showcasing contemporary architecture and modern amenities.',
+            image: '/Projects/Handover/Prime Raiyan, Niketon, Gulshan.jpg',
+            category: 'HANDOVER',
+            location: 'Niketon, Gulshan',
         },
         {
             id: 4,
-            title: "RETAIL CENTER 'PRISM'",
-            description: 'A contemporary shopping destination blending architecture with experience.',
-            image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800',
-            category: 'PUBLIC SPACES',
+            title: 'PRIME RAJ',
+            description: 'Sophisticated residential project designed for upscale living in a prime location.',
+            image: '/Projects/Handover/Prime Raj, Niketon, Gulshan.jpg',
+            category: 'HANDOVER',
+            location: 'Niketon, Gulshan',
         },
+        // ONGOING PROJECTS
         {
             id: 5,
-            title: "LUXURY APARTMENT 'AZURE'",
-            description: 'Premium living spaces with breathtaking views and modern amenities.',
-            image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800',
-            category: 'HOUSE DESIGN',
+            title: 'PREMIER FAHMIDA GREEN',
+            description: 'Exclusive residential project in Bashundhara R/A with natural light, ventilation, and modern amenities near top universities.',
+            image: '/Projects/Ongoing/Fahmida GreenFile/Perspective PHGreen/0000.png',
+            category: 'ONGOING',
+            location: 'Bashundhara R/A',
+            label: 'GREEN',
         },
         {
             id: 6,
-            title: "CORPORATE HQ 'VERTEX'",
-            description: 'Headquarters design reflecting brand identity through architectural excellence.',
-            image: 'https://images.unsplash.com/photo-1486718448742-163732cd1544?w=800',
-            category: '3D VISUALIZATION',
+            title: 'PREMIER MAYA NIBASH',
+            description: 'Modern residential project in Lalmatia offering spacious living with full-height windows and sophisticated design.',
+            image: '/Projects/Ongoing/Maya Nibash/Premier Maya Nibash/PREMIER MAYA NIBASH 27.10.png',
+            category: 'ONGOING',
+            location: 'Lalmatia',
+            label: 'MAYA',
+        },
+        {
+            id: 7,
+            title: 'PREMIER HOMES',
+            description: 'Contemporary residential development featuring multiple perspectives with elegant architectural design.',
+            image: '/Projects/Ongoing/Premier Homes/North.jpg',
+            category: 'ONGOING',
+        },
+        {
+            id: 8,
+            title: 'PREMIER ZAYFA MANOR',
+            description: 'Upcoming exclusive residential manor combining traditional elegance with modern comfort.',
+            image: '/Projects/Ongoing/Premier Zayfa Manor/Premier Zayfa Manor.jpeg',
+            category: 'ONGOING',
         },
     ],
 }) => {
+    const navigate = useNavigate();
     const [activeFilter, setActiveFilter] = useState('ALL');
     const cardsRef = useRef<HTMLDivElement>(null);
 
-    const filters = ['ALL', 'HOUSE DESIGN', 'INTERIOR DESIGN', 'PUBLIC SPACES', '3D VISUALIZATION'];
+    const filters = ['ALL', 'HANDOVER', 'ONGOING', 'UPCOMING'];
+
+    const handleProjectClick = (projectId: number) => {
+        navigate({ to: `/projects/${projectId}` });
+    };
 
     const filteredProjects =
         activeFilter === 'ALL'
@@ -371,6 +409,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                                 key={project.id}
                                 sx={portfolioStyles.projectCard}
                                 className='projectCard'
+                                onClick={() => handleProjectClick(project.id)}
                             >
                                 <Box sx={portfolioStyles.cardImageContainer}>
                                     <Box
@@ -394,7 +433,24 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                                     )}
                                 </Box>
 
-                                <Typography sx={portfolioStyles.cardTitle}>{project.title}</Typography>
+                                <Typography sx={portfolioStyles.cardTitle}>
+                                    {project.title}
+                                    {project.location && (
+                                        <Box
+                                            component='span'
+                                            sx={{
+                                                display: 'block',
+                                                fontSize: { xs: '12px', md: '13px' },
+                                                fontWeight: 500,
+                                                color: '#979797',
+                                                mt: 0.5,
+                                                letterSpacing: '0.3px',
+                                            }}
+                                        >
+                                            {project.location}
+                                        </Box>
+                                    )}
+                                </Typography>
 
                                 <Typography sx={portfolioStyles.cardDescription}>
                                     {project.description}

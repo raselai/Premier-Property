@@ -32,14 +32,20 @@ const servicesStyles: Record<string, SxProps<Theme>> = {
     },
     sectionLabel: {
         display: 'inline-block',
-        border: '1px solid rgba(255, 255, 255, 0.3)',
+        backgroundColor: '#0F5132',
+        border: '1px solid #0F5132',
         borderRadius: '20px',
         padding: '8px 16px',
         fontFamily: 'Montserrat, sans-serif',
         fontSize: { xs: '12px', md: '13px' },
-        color: 'rgba(255, 255, 255, 0.7)',
+        color: '#FFFFFF',
         fontWeight: 400,
         mb: { xs: 2, md: 3 },
+        transition: 'all 0.3s ease',
+        '&:hover': {
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
+        },
     },
     heading: {
         fontFamily: 'Gilroy, sans-serif',
@@ -52,7 +58,7 @@ const servicesStyles: Record<string, SxProps<Theme>> = {
         color: '#FFFFFF',
     },
     headingGold: {
-        color: '#CE9443',
+        color: '#0F5132',
     },
     carouselNav: {
         display: 'flex',
@@ -63,12 +69,14 @@ const servicesStyles: Record<string, SxProps<Theme>> = {
         width: '48px',
         height: '48px',
         borderRadius: '50%',
-        border: '1px solid rgba(255, 255, 255, 0.3)',
-        backgroundColor: 'transparent',
+        border: '1px solid #0F5132',
+        backgroundColor: '#0F5132',
         color: '#FFFFFF',
+        transition: 'all 0.3s ease',
         '&:hover': {
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
-            borderColor: 'rgba(255, 255, 255, 0.5)',
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
+            borderColor: '#0F5132',
         },
     },
     description: {
@@ -86,8 +94,8 @@ const servicesStyles: Record<string, SxProps<Theme>> = {
         fontWeight: 400,
     },
     consultationButton: {
-        backgroundColor: '#FFFFFF',
-        color: '#2D2D2D',
+        backgroundColor: '#0F5132',
+        color: '#FFFFFF',
         fontFamily: 'Montserrat, sans-serif',
         fontSize: '14px',
         fontWeight: 500,
@@ -98,17 +106,26 @@ const servicesStyles: Record<string, SxProps<Theme>> = {
         alignItems: 'center',
         gap: 1,
         width: 'fit-content',
+        transition: 'all 0.3s ease',
+        border: '1px solid #0F5132',
         '&:hover': {
-            backgroundColor: '#F5F5F5',
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
+            borderColor: '#0F5132',
+            '& .MuiSvgIcon-root': {
+                backgroundColor: '#0F5132',
+                color: '#FFFFFF',
+            },
         },
         '& .MuiSvgIcon-root': {
             fontSize: '18px',
-            backgroundColor: '#2D2D2D',
-            color: '#FFFFFF',
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
             borderRadius: '50%',
             padding: '4px',
             width: '24px',
             height: '24px',
+            transition: 'all 0.3s ease',
         },
     },
     cardsContainer: {
@@ -168,7 +185,7 @@ const servicesStyles: Record<string, SxProps<Theme>> = {
     cardNumber: {
         fontFamily: 'Montserrat, sans-serif',
         fontSize: { xs: '14px', md: '15px' },
-        color: '#CE9443',
+        color: '#0F5132',
         fontWeight: 500,
     },
     cardDescription: {

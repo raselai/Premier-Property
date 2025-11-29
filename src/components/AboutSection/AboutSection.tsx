@@ -33,14 +33,20 @@ const aboutStyles: Record<string, SxProps<Theme>> = {
     },
     sectionLabel: {
         display: 'inline-block',
-        border: '1px solid #2D2D2D',
+        backgroundColor: '#0F5132',
+        border: '1px solid #0F5132',
         borderRadius: '20px',
         padding: '8px 16px',
         fontFamily: 'Montserrat, sans-serif',
         fontSize: { xs: '12px', md: '13px' },
-        color: '#2D2D2D',
+        color: '#FFFFFF',
         fontWeight: 400,
         mb: { xs: 2, md: 3 },
+        transition: 'all 0.3s ease',
+        '&:hover': {
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
+        },
     },
     heading: {
         fontFamily: 'Gilroy, sans-serif',
@@ -53,7 +59,7 @@ const aboutStyles: Record<string, SxProps<Theme>> = {
         color: '#2D2D2D',
     },
     headingGold: {
-        color: '#CE9443',
+        color: '#0F5132',
     },
     description: {
         fontFamily: 'Montserrat, sans-serif',
@@ -71,7 +77,7 @@ const aboutStyles: Record<string, SxProps<Theme>> = {
         fontWeight: 400,
     },
     consultationButton: {
-        backgroundColor: '#2D2D2D',
+        backgroundColor: '#0F5132',
         color: '#FFFFFF',
         fontFamily: 'Montserrat, sans-serif',
         fontSize: '14px',
@@ -82,17 +88,26 @@ const aboutStyles: Record<string, SxProps<Theme>> = {
         display: 'inline-flex',
         alignItems: 'center',
         gap: 1,
+        transition: 'all 0.3s ease',
+        border: '1px solid #0F5132',
         '&:hover': {
-            backgroundColor: '#1A1A1A',
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
+            borderColor: '#0F5132',
+            '& .MuiSvgIcon-root': {
+                backgroundColor: '#0F5132',
+                color: '#FFFFFF',
+            },
         },
         '& .MuiSvgIcon-root': {
             fontSize: '18px',
             backgroundColor: '#FFFFFF',
-            color: '#2D2D2D',
+            color: '#0F5132',
             borderRadius: '50%',
             padding: '4px',
             width: '24px',
             height: '24px',
+            transition: 'all 0.3s ease',
         },
     },
     imageContainer: {
@@ -163,7 +178,7 @@ const aboutStyles: Record<string, SxProps<Theme>> = {
         fontWeight: 700,
     },
     statementGold: {
-        color: '#CE9443',
+        color: '#0F5132',
         fontWeight: 700,
     },
     statementGrey: {
@@ -188,11 +203,14 @@ const aboutStyles: Record<string, SxProps<Theme>> = {
         width: '45px',
         height: '45px',
         borderRadius: '50%',
-        border: '1px solid #979797',
-        backgroundColor: 'transparent',
-        color: '#2D2D2D',
+        border: '1px solid #0F5132',
+        backgroundColor: '#0F5132',
+        color: '#FFFFFF',
+        transition: 'all 0.3s ease',
         '&:hover': {
-            backgroundColor: 'rgba(45, 45, 45, 0.05)',
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
+            borderColor: '#0F5132',
         },
     },
     projectCards: {
@@ -309,7 +327,7 @@ const aboutStyles: Record<string, SxProps<Theme>> = {
         },
         '& .MuiSvgIcon-root': {
             fontSize: '18px',
-            color: '#CE9443',
+            color: '#0F5132',
             flexShrink: 0,
             mt: '2px',
         },

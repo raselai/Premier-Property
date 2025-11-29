@@ -92,7 +92,7 @@ const heroStyles: Record<string, SxProps<Theme>> = {
         letterSpacing: '0.01em',
     },
     button: {
-        backgroundColor: '#CE9443',
+        backgroundColor: '#0F5132',
         color: '#FFFFFF',
         fontFamily: 'Gilroy, sans-serif',
         fontWeight: 700,
@@ -101,12 +101,15 @@ const heroStyles: Record<string, SxProps<Theme>> = {
         fontSize: { xs: '1.125rem', md: '1.375rem' },
         borderRadius: '50px',
         textTransform: 'none',
-        boxShadow: '0 8px 30px rgba(206, 148, 67, 0.4)',
+        border: '2px solid #0F5132',
+        boxShadow: '0 8px 30px rgba(15, 81, 50, 0.4)',
         transition: 'all 0.3s ease',
         '&:hover': {
-            backgroundColor: '#E5B864',
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
+            borderColor: '#0F5132',
             transform: 'translateY(-3px)',
-            boxShadow: '0 12px 40px rgba(206, 148, 67, 0.6)',
+            boxShadow: '0 12px 40px rgba(15, 81, 50, 0.6)',
         },
         '&:active': {
             transform: 'translateY(-1px)',

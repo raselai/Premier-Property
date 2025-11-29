@@ -48,7 +48,7 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
         top: { md: '30px' },
         left: { md: '40px' },
         display: 'inline-block',
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        backgroundColor: '#0F5132',
         backdropFilter: 'blur(10px)',
         WebkitBackdropFilter: 'blur(10px)',
         borderRadius: '20px',
@@ -58,6 +58,12 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
         color: '#FFFFFF',
         fontWeight: 400,
         mb: { xs: 3, md: 0 },
+        border: '1px solid #0F5132',
+        transition: 'all 0.3s ease',
+        '&:hover': {
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
+        },
     },
     contactGrid: {
         display: 'flex',
@@ -137,8 +143,8 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
         },
     },
     submitButton: {
-        backgroundColor: '#FFFFFF',
-        color: '#2D2D2D',
+        backgroundColor: '#0F5132',
+        color: '#FFFFFF',
         fontFamily: 'Montserrat, sans-serif',
         fontSize: '14px',
         fontWeight: 500,
@@ -149,22 +155,31 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
         display: 'inline-flex',
         alignItems: 'center',
         gap: 1,
+        transition: 'all 0.3s ease',
+        border: '1px solid #0F5132',
         '&:hover': {
-            backgroundColor: '#F5F5F5',
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
+            borderColor: '#0F5132',
+            '& .MuiSvgIcon-root': {
+                backgroundColor: '#0F5132',
+                color: '#FFFFFF',
+            },
         },
         '& .MuiSvgIcon-root': {
             fontSize: '18px',
-            backgroundColor: '#2D2D2D',
-            color: '#FFFFFF',
+            backgroundColor: '#FFFFFF',
+            color: '#0F5132',
             borderRadius: '50%',
             padding: '4px',
             width: '24px',
             height: '24px',
+            transition: 'all 0.3s ease',
         },
     },
     // Brand Watermark Section
     brandSection: {
-        backgroundColor: '#3D3D3D',
+        backgroundColor: '#0F5132',
         py: { xs: 6, md: 10 },
         textAlign: 'center',
         overflow: 'hidden',
@@ -184,7 +199,7 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
     },
     // Footer Section
     footerSection: {
-        backgroundColor: '#3D3D3D',
+        backgroundColor: '#0F5132',
         py: { xs: 5, md: 6 },
         px: { xs: 3, md: 8, lg: 10 },
     },
@@ -239,9 +254,9 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
         color: '#FFFFFF',
         transition: 'all 0.3s ease',
         '&:hover': {
-            borderColor: '#CE9443',
+            borderColor: '#0F5132',
             backgroundColor: 'rgba(206, 148, 67, 0.15)',
-            color: '#CE9443',
+            color: '#0F5132',
         },
     },
     navLinks: {
@@ -257,7 +272,7 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
         transition: 'color 0.3s ease',
         cursor: 'pointer',
         '&:hover': {
-            color: '#CE9443',
+            color: '#0F5132',
         },
     },
     contactInfo: {
@@ -275,7 +290,7 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
         borderTop: '1px solid rgba(255, 255, 255, 0.1)',
         py: 3,
         px: { xs: 3, md: 8, lg: 10 },
-        backgroundColor: '#3D3D3D',
+        backgroundColor: '#0F5132',
     },
     bottomContent: {
         display: 'flex',
