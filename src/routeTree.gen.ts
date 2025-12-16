@@ -11,10 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PropertiesIndexRouteImport } from './routes/properties/index'
+import { Route as AboutIndexRouteImport } from './routes/about/index'
 import { Route as ProjectsUpcomingRouteImport } from './routes/projects/upcoming'
 import { Route as ProjectsOngoingRouteImport } from './routes/projects/ongoing'
 import { Route as ProjectsCompletedRouteImport } from './routes/projects/completed'
 import { Route as ProjectsProjectIdRouteImport } from './routes/projects/$projectId'
+import { Route as AboutMilestonesRouteImport } from './routes/about/milestones'
+import { Route as AboutApproachRouteImport } from './routes/about/approach'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -24,6 +27,11 @@ const IndexRoute = IndexRouteImport.update({
 const PropertiesIndexRoute = PropertiesIndexRouteImport.update({
   id: '/properties/',
   path: '/properties/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutIndexRoute = AboutIndexRouteImport.update({
+  id: '/about/',
+  path: '/about/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsUpcomingRoute = ProjectsUpcomingRouteImport.update({
@@ -46,65 +54,96 @@ const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
   path: '/projects/$projectId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutMilestonesRoute = AboutMilestonesRouteImport.update({
+  id: '/about/milestones',
+  path: '/about/milestones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutApproachRoute = AboutApproachRouteImport.update({
+  id: '/about/approach',
+  path: '/about/approach',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about/approach': typeof AboutApproachRoute
+  '/about/milestones': typeof AboutMilestonesRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/projects/ongoing': typeof ProjectsOngoingRoute
   '/projects/upcoming': typeof ProjectsUpcomingRoute
+  '/about': typeof AboutIndexRoute
   '/properties': typeof PropertiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about/approach': typeof AboutApproachRoute
+  '/about/milestones': typeof AboutMilestonesRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/projects/ongoing': typeof ProjectsOngoingRoute
   '/projects/upcoming': typeof ProjectsUpcomingRoute
+  '/about': typeof AboutIndexRoute
   '/properties': typeof PropertiesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about/approach': typeof AboutApproachRoute
+  '/about/milestones': typeof AboutMilestonesRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/projects/ongoing': typeof ProjectsOngoingRoute
   '/projects/upcoming': typeof ProjectsUpcomingRoute
+  '/about/': typeof AboutIndexRoute
   '/properties/': typeof PropertiesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about/approach'
+    | '/about/milestones'
     | '/projects/$projectId'
     | '/projects/completed'
     | '/projects/ongoing'
     | '/projects/upcoming'
+    | '/about'
     | '/properties'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about/approach'
+    | '/about/milestones'
     | '/projects/$projectId'
     | '/projects/completed'
     | '/projects/ongoing'
     | '/projects/upcoming'
+    | '/about'
     | '/properties'
   id:
     | '__root__'
     | '/'
+    | '/about/approach'
+    | '/about/milestones'
     | '/projects/$projectId'
     | '/projects/completed'
     | '/projects/ongoing'
     | '/projects/upcoming'
+    | '/about/'
     | '/properties/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutApproachRoute: typeof AboutApproachRoute
+  AboutMilestonesRoute: typeof AboutMilestonesRoute
   ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
   ProjectsCompletedRoute: typeof ProjectsCompletedRoute
   ProjectsOngoingRoute: typeof ProjectsOngoingRoute
   ProjectsUpcomingRoute: typeof ProjectsUpcomingRoute
+  AboutIndexRoute: typeof AboutIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
 }
 
@@ -122,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/properties'
       fullPath: '/properties'
       preLoaderRoute: typeof PropertiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/': {
+      id: '/about/'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/upcoming': {
@@ -152,15 +198,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsProjectIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/milestones': {
+      id: '/about/milestones'
+      path: '/about/milestones'
+      fullPath: '/about/milestones'
+      preLoaderRoute: typeof AboutMilestonesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/approach': {
+      id: '/about/approach'
+      path: '/about/approach'
+      fullPath: '/about/approach'
+      preLoaderRoute: typeof AboutApproachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutApproachRoute: AboutApproachRoute,
+  AboutMilestonesRoute: AboutMilestonesRoute,
   ProjectsProjectIdRoute: ProjectsProjectIdRoute,
   ProjectsCompletedRoute: ProjectsCompletedRoute,
   ProjectsOngoingRoute: ProjectsOngoingRoute,
   ProjectsUpcomingRoute: ProjectsUpcomingRoute,
+  AboutIndexRoute: AboutIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
 }
 export const routeTree = rootRouteImport

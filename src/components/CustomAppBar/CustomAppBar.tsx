@@ -41,6 +41,7 @@ const navigationItems: NavigationItem[] = [
     {
         label: 'About Us',
         submenu: [
+            { label: 'Company Overview', path: '/about' },
             { label: 'Our Approach', path: '/about/approach' },
             { label: 'Milestones', path: '/about/milestones' },
         ],
