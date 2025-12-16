@@ -16,6 +16,11 @@ import { Route as ProjectsUpcomingRouteImport } from './routes/projects/upcoming
 import { Route as ProjectsOngoingRouteImport } from './routes/projects/ongoing'
 import { Route as ProjectsCompletedRouteImport } from './routes/projects/completed'
 import { Route as ProjectsProjectIdRouteImport } from './routes/projects/$projectId'
+import { Route as LandownerSubmitRouteImport } from './routes/landowner/submit'
+import { Route as LandownerJointVentureRouteImport } from './routes/landowner/joint-venture'
+import { Route as BuyersGuidePaymentPlanRouteImport } from './routes/buyers-guide/payment-plan'
+import { Route as BuyersGuideHowToBuyRouteImport } from './routes/buyers-guide/how-to-buy'
+import { Route as BuyersGuideFaqRouteImport } from './routes/buyers-guide/faq'
 import { Route as AboutMilestonesRouteImport } from './routes/about/milestones'
 import { Route as AboutApproachRouteImport } from './routes/about/approach'
 
@@ -54,6 +59,31 @@ const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
   path: '/projects/$projectId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LandownerSubmitRoute = LandownerSubmitRouteImport.update({
+  id: '/landowner/submit',
+  path: '/landowner/submit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandownerJointVentureRoute = LandownerJointVentureRouteImport.update({
+  id: '/landowner/joint-venture',
+  path: '/landowner/joint-venture',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyersGuidePaymentPlanRoute = BuyersGuidePaymentPlanRouteImport.update({
+  id: '/buyers-guide/payment-plan',
+  path: '/buyers-guide/payment-plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyersGuideHowToBuyRoute = BuyersGuideHowToBuyRouteImport.update({
+  id: '/buyers-guide/how-to-buy',
+  path: '/buyers-guide/how-to-buy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyersGuideFaqRoute = BuyersGuideFaqRouteImport.update({
+  id: '/buyers-guide/faq',
+  path: '/buyers-guide/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutMilestonesRoute = AboutMilestonesRouteImport.update({
   id: '/about/milestones',
   path: '/about/milestones',
@@ -69,6 +99,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about/approach': typeof AboutApproachRoute
   '/about/milestones': typeof AboutMilestonesRoute
+  '/buyers-guide/faq': typeof BuyersGuideFaqRoute
+  '/buyers-guide/how-to-buy': typeof BuyersGuideHowToBuyRoute
+  '/buyers-guide/payment-plan': typeof BuyersGuidePaymentPlanRoute
+  '/landowner/joint-venture': typeof LandownerJointVentureRoute
+  '/landowner/submit': typeof LandownerSubmitRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/projects/ongoing': typeof ProjectsOngoingRoute
@@ -80,6 +115,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about/approach': typeof AboutApproachRoute
   '/about/milestones': typeof AboutMilestonesRoute
+  '/buyers-guide/faq': typeof BuyersGuideFaqRoute
+  '/buyers-guide/how-to-buy': typeof BuyersGuideHowToBuyRoute
+  '/buyers-guide/payment-plan': typeof BuyersGuidePaymentPlanRoute
+  '/landowner/joint-venture': typeof LandownerJointVentureRoute
+  '/landowner/submit': typeof LandownerSubmitRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/projects/ongoing': typeof ProjectsOngoingRoute
@@ -92,6 +132,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about/approach': typeof AboutApproachRoute
   '/about/milestones': typeof AboutMilestonesRoute
+  '/buyers-guide/faq': typeof BuyersGuideFaqRoute
+  '/buyers-guide/how-to-buy': typeof BuyersGuideHowToBuyRoute
+  '/buyers-guide/payment-plan': typeof BuyersGuidePaymentPlanRoute
+  '/landowner/joint-venture': typeof LandownerJointVentureRoute
+  '/landowner/submit': typeof LandownerSubmitRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/projects/ongoing': typeof ProjectsOngoingRoute
@@ -105,6 +150,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about/approach'
     | '/about/milestones'
+    | '/buyers-guide/faq'
+    | '/buyers-guide/how-to-buy'
+    | '/buyers-guide/payment-plan'
+    | '/landowner/joint-venture'
+    | '/landowner/submit'
     | '/projects/$projectId'
     | '/projects/completed'
     | '/projects/ongoing'
@@ -116,6 +166,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about/approach'
     | '/about/milestones'
+    | '/buyers-guide/faq'
+    | '/buyers-guide/how-to-buy'
+    | '/buyers-guide/payment-plan'
+    | '/landowner/joint-venture'
+    | '/landowner/submit'
     | '/projects/$projectId'
     | '/projects/completed'
     | '/projects/ongoing'
@@ -127,6 +182,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about/approach'
     | '/about/milestones'
+    | '/buyers-guide/faq'
+    | '/buyers-guide/how-to-buy'
+    | '/buyers-guide/payment-plan'
+    | '/landowner/joint-venture'
+    | '/landowner/submit'
     | '/projects/$projectId'
     | '/projects/completed'
     | '/projects/ongoing'
@@ -139,6 +199,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutApproachRoute: typeof AboutApproachRoute
   AboutMilestonesRoute: typeof AboutMilestonesRoute
+  BuyersGuideFaqRoute: typeof BuyersGuideFaqRoute
+  BuyersGuideHowToBuyRoute: typeof BuyersGuideHowToBuyRoute
+  BuyersGuidePaymentPlanRoute: typeof BuyersGuidePaymentPlanRoute
+  LandownerJointVentureRoute: typeof LandownerJointVentureRoute
+  LandownerSubmitRoute: typeof LandownerSubmitRoute
   ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
   ProjectsCompletedRoute: typeof ProjectsCompletedRoute
   ProjectsOngoingRoute: typeof ProjectsOngoingRoute
@@ -198,6 +263,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsProjectIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/landowner/submit': {
+      id: '/landowner/submit'
+      path: '/landowner/submit'
+      fullPath: '/landowner/submit'
+      preLoaderRoute: typeof LandownerSubmitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landowner/joint-venture': {
+      id: '/landowner/joint-venture'
+      path: '/landowner/joint-venture'
+      fullPath: '/landowner/joint-venture'
+      preLoaderRoute: typeof LandownerJointVentureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buyers-guide/payment-plan': {
+      id: '/buyers-guide/payment-plan'
+      path: '/buyers-guide/payment-plan'
+      fullPath: '/buyers-guide/payment-plan'
+      preLoaderRoute: typeof BuyersGuidePaymentPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buyers-guide/how-to-buy': {
+      id: '/buyers-guide/how-to-buy'
+      path: '/buyers-guide/how-to-buy'
+      fullPath: '/buyers-guide/how-to-buy'
+      preLoaderRoute: typeof BuyersGuideHowToBuyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buyers-guide/faq': {
+      id: '/buyers-guide/faq'
+      path: '/buyers-guide/faq'
+      fullPath: '/buyers-guide/faq'
+      preLoaderRoute: typeof BuyersGuideFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about/milestones': {
       id: '/about/milestones'
       path: '/about/milestones'
@@ -219,6 +319,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutApproachRoute: AboutApproachRoute,
   AboutMilestonesRoute: AboutMilestonesRoute,
+  BuyersGuideFaqRoute: BuyersGuideFaqRoute,
+  BuyersGuideHowToBuyRoute: BuyersGuideHowToBuyRoute,
+  BuyersGuidePaymentPlanRoute: BuyersGuidePaymentPlanRoute,
+  LandownerJointVentureRoute: LandownerJointVentureRoute,
+  LandownerSubmitRoute: LandownerSubmitRoute,
   ProjectsProjectIdRoute: ProjectsProjectIdRoute,
   ProjectsCompletedRoute: ProjectsCompletedRoute,
   ProjectsOngoingRoute: ProjectsOngoingRoute,
