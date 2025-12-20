@@ -13,23 +13,12 @@ import { ServicesSection } from '@/components/ServicesSection';
 import { PortfolioSection } from '@/components/PortfolioSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { ContactFooterSection } from '@/components/ContactFooterSection';
-import { useNavigate } from '@tanstack/react-router';
 
 export const HomePage: React.FC = () => {
-    const navigate = useNavigate();
-
-    const handleBrowseProperties = () => {
-        navigate({ to: '/properties' });
-    };
-
     return (
         <Box>
             {/* Hero Section with Background Image */}
-            <HeroSectionSimple
-                subtitle='House and Development Ltd'
-                buttonText="Let's Talk"
-                onButtonClick={handleBrowseProperties}
-            />
+            <HeroSectionSimple />
 
             {/* Introduction Section */}
             <IntroSection />

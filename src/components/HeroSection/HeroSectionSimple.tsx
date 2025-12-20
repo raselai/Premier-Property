@@ -4,15 +4,11 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Button, Container } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 
-interface HeroSectionSimpleProps {
-    title?: string;
-    subtitle?: string;
-    buttonText?: string;
-    onButtonClick?: () => void;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface HeroSectionSimpleProps {}
 
 const heroImages = [
     '/Hero_Emage.jpg',
@@ -136,11 +132,7 @@ const heroStyles: Record<string, SxProps<Theme>> = {
     },
 };
 
-export const HeroSectionSimple: React.FC<HeroSectionSimpleProps> = ({
-    subtitle = 'House and Development Ltd',
-    buttonText = "Let's Talk",
-    onButtonClick,
-}) => {
+export const HeroSectionSimple: React.FC<HeroSectionSimpleProps> = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {

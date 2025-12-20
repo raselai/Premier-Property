@@ -4,9 +4,8 @@
  */
 
 import React, { useEffect, useRef } from 'react';
-import { Box, Typography, Button, Container } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 const servicesStyles: Record<string, SxProps<Theme>> = {
     section: {
