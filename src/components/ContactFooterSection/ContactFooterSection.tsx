@@ -17,7 +17,7 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
     contactSection: {
         position: 'relative',
         minHeight: { xs: 'auto', md: '600px' },
-        backgroundImage: 'url(https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600)',
+        backgroundImage: 'url(/Con_premier/1cityscape.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -120,6 +120,7 @@ const contactFooterStyles: Record<string, SxProps<Theme>> = {
         padding: { xs: '30px 25px', md: '40px 35px' },
         width: { xs: '100%', md: '380px' },
         border: '1px solid rgba(255, 255, 255, 0.2)',
+        mt: { xs: 0, md: 8 },
     },
     formField: {
         mb: 1,
@@ -329,19 +330,15 @@ export const ContactFooterSection: React.FC = () => {
             {/* Contact Section with Background Image */}
             <Box sx={contactFooterStyles.contactSection}>
                 <Box sx={contactFooterStyles.contactContent}>
-                    <Typography sx={contactFooterStyles.sectionLabel}>04 - contacts</Typography>
-
                     <Box sx={contactFooterStyles.contactGrid}>
                         {/* Left Content */}
                         <Box sx={contactFooterStyles.leftContent}>
                             <Typography sx={contactFooterStyles.contactHeading}>
-                                LET'S BUILD
-                                <br />
-                                TOGETHER
+                                LET'S BUILD YOUR FUTURE
                             </Typography>
 
                             <Typography sx={contactFooterStyles.contactDescription}>
-                                Contact us to discuss your idea and bring it to reality, creating a unique space designed for your future success.
+                                Connect with us to discover premium residences that blend quality construction, elegant design, and a lifestyle you can truly call home.
                             </Typography>
 
                             {/* Feature Tags */}
@@ -390,11 +387,6 @@ export const ContactFooterSection: React.FC = () => {
                 </Box>
             </Box>
 
-            {/* Brand Watermark Section */}
-            <Box sx={contactFooterStyles.brandSection}>
-                <Typography sx={contactFooterStyles.brandText}>PREMIER</Typography>
-            </Box>
-
             {/* Footer Section */}
             <Box sx={contactFooterStyles.footerSection}>
                 <Box sx={contactFooterStyles.footerGrid}>
@@ -417,7 +409,13 @@ export const ContactFooterSection: React.FC = () => {
 
                     {/* Social Media Column */}
                     <Box sx={contactFooterStyles.socialIcons}>
-                        <IconButton sx={contactFooterStyles.socialIcon}>
+                        <IconButton
+                            sx={contactFooterStyles.socialIcon}
+                            component='a'
+                            href='https://www.facebook.com/premierhousingltd'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
                             <FacebookOutlinedIcon />
                         </IconButton>
                         <IconButton sx={contactFooterStyles.socialIcon}>

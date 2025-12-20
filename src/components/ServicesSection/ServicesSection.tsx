@@ -11,7 +11,8 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 const servicesStyles: Record<string, SxProps<Theme>> = {
     section: {
         backgroundColor: '#1A1A1A',
-        py: { xs: 6, md: 10 },
+        pt: 0,
+        pb: { xs: 6, md: 10 },
         px: { xs: 3, md: 8, lg: 10 },
     },
     topArea: {
@@ -52,6 +53,7 @@ const servicesStyles: Record<string, SxProps<Theme>> = {
         fontSize: { xs: '36px', sm: '48px', md: '58px' },
         fontWeight: 800,
         lineHeight: 1.15,
+        pt: { xs: 4, md: 6 },
         mb: { xs: 3, md: 4 },
     },
     headingWhite: {
@@ -83,6 +85,7 @@ const servicesStyles: Record<string, SxProps<Theme>> = {
         fontFamily: 'Montserrat, sans-serif',
         fontSize: { xs: '15px', md: '17px' },
         lineHeight: 1.65,
+        pt: { xs: 4, md: 6 },
         mb: { xs: 3, md: 4 },
     },
     descriptionWhite: {
@@ -213,34 +216,34 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
     services = [
         {
             id: 1,
-            title: 'HOUSE DESIGN',
+            title: 'STRUCTURAL MATERIALS',
             number: '/01',
-            description: 'We design private and commercial buildings with a focus on futuristic functionality and aesthetics buildings.',
-            image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800',
+            description: 'High-grade concrete, certified steel, and reinforcement systems from leading brands engineered for strength, safety, and long-term structural integrity.',
+            image: '/Con_premier/pic15.jpg',
             offset: false,
         },
         {
             id: 2,
-            title: 'INTERIOR DESIGN',
+            title: 'FINISHING MATERIALS',
             number: '/02',
-            description: 'We create inspiring spaces where comfort meets aesthetics and the smart technologies of the future.',
-            image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800',
+            description: 'Premium tiles, marble, wood finishes, paints, and surface solutions sourced from renowned brands—delivering timeless beauty and flawless detailing.',
+            image: '/Con_premier/pic14.jpg',
             offset: true,
         },
         {
             id: 3,
-            title: 'PUBLIC SPACES',
+            title: 'FACADE & EXTERIOR',
             number: '/03',
-            description: 'Comprehensive architectural solutions for offices, leisure spaces, and modern infrastructure.',
-            image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800',
+            description: 'High-performance glass, aluminum systems, ACP panels, and stone cladding from top manufacturers—designed for modern appeal, weather resistance, and efficiency.',
+            image: '/Con_premier/pic13.jpg',
             offset: false,
         },
         {
             id: 4,
-            title: '3D VISUALIZATION',
+            title: 'INTERIOR MATERIALS',
             number: '/04',
-            description: 'We showcase ideas before their realization through detailed and highly realistic visualizations.',
-            image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800',
+            description: 'Carefully selected gypsum, MDF, laminates, acoustic panels, and specialty finishes from trusted premium brands—combining comfort, functionality, and elegance.',
+            image: '/Con_premier/pic1.jpg',
             offset: true,
         },
     ],
@@ -286,44 +289,30 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                 <Box sx={servicesStyles.topArea}>
                     {/* Left Content */}
                     <Box sx={servicesStyles.leftContent}>
-                        <Typography sx={servicesStyles.sectionLabel}>
-                            02 - services
-                        </Typography>
-
                         <Typography sx={servicesStyles.heading}>
                             <Box component='span' sx={servicesStyles.headingWhite}>
                                 FROM{' '}
                             </Box>
                             <Box component='span' sx={servicesStyles.headingGold}>
-                                IDEA TO
+                                MATERIAL TO
                             </Box>
                             <br />
                             <Box component='span' sx={servicesStyles.headingWhite}>
-                                FINAL PRODUCT
+                                MASTERPIECE
                             </Box>
                         </Typography>
-
-                        <Box sx={servicesStyles.carouselNav}>
-                            <Button sx={servicesStyles.navButton}>‹</Button>
-                            <Button sx={servicesStyles.navButton}>›</Button>
-                        </Box>
                     </Box>
 
                     {/* Right Content */}
                     <Box sx={servicesStyles.rightContent}>
                         <Box sx={servicesStyles.description}>
                             <Typography component='span' sx={servicesStyles.descriptionWhite}>
-                                From private residences to public spaces we bring ideas to life that make living more comfortable,{' '}
+                                We use only premium, globally trusted brands of materials—ensuring durability, refined aesthetics,{' '}
                             </Typography>
                             <Typography component='span' sx={servicesStyles.descriptionGrey}>
-                                blending innovation with timeless design and creating inspiring environments that truly connect and endure.
+                                and superior performance in every project.
                             </Typography>
                         </Box>
-
-                        <Button sx={servicesStyles.consultationButton}>
-                            Consultation
-                            <ArrowOutwardIcon />
-                        </Button>
                     </Box>
                 </Box>
 

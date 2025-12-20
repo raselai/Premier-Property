@@ -22,7 +22,7 @@ import {
     Menu as MenuIcon,
     Close as CloseIcon,
     Facebook as FacebookIcon,
-    Instagram as InstagramIcon,
+    WhatsApp as WhatsAppIcon,
     ArrowForward as ArrowForwardIcon,
     ExpandMore as ExpandMoreIcon,
     ExpandLess as ExpandLessIcon,
@@ -38,14 +38,7 @@ interface NavigationItem {
 
 const navigationItems: NavigationItem[] = [
     { label: 'Home', path: '/' },
-    {
-        label: 'About Us',
-        submenu: [
-            { label: 'Company Overview', path: '/about' },
-            { label: 'Our Approach', path: '/about/approach' },
-            { label: 'Milestones', path: '/about/milestones' },
-        ],
-    },
+    { label: 'About Us', path: '/about' },
     {
         label: 'Projects',
         submenu: [
@@ -59,6 +52,8 @@ const navigationItems: NavigationItem[] = [
         submenu: [
             { label: 'Joint Venture / Land Sharing', path: '/landowner/joint-venture' },
             { label: 'Submit Your Land', path: '/landowner/submit' },
+            { label: 'Our Approach', path: '/about/approach' },
+            { label: 'Milestones', path: '/about/milestones' },
         ],
     },
     {
@@ -69,6 +64,8 @@ const navigationItems: NavigationItem[] = [
             { label: 'FAQ', path: '/buyers-guide/faq' },
         ],
     },
+    { label: 'Gallery', path: '/gallery' },
+    { label: 'Career', path: '/career' },
     { label: 'Contact Us', path: '/contact' },
 ];
 
@@ -345,8 +342,8 @@ export const CustomAppBar: React.FC = () => {
     const handleSocialClick = (platform: string) => {
         // Add your social media URLs here
         const urls: { [key: string]: string } = {
-            facebook: 'https://facebook.com',
-            instagram: 'https://instagram.com',
+            facebook: 'https://www.facebook.com/premierhousingltd',
+            whatsapp: 'https://wa.me/1234567890',
         };
         window.open(urls[platform], '_blank');
     };
@@ -417,9 +414,9 @@ export const CustomAppBar: React.FC = () => {
                         </IconButton>
                         <IconButton
                             sx={appBarStyles.socialIcon}
-                            onClick={() => handleSocialClick('instagram')}
+                            onClick={() => handleSocialClick('whatsapp')}
                         >
-                            <InstagramIcon fontSize='small' />
+                            <WhatsAppIcon fontSize='small' />
                         </IconButton>
 
                         {/* Consultation Button */}

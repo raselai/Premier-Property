@@ -17,6 +17,7 @@ import {
     ArrowForward as ArrowForwardIcon,
     CheckCircle as CheckCircleIcon,
 } from '@mui/icons-material';
+import { ContactFooterSection } from '@/components/ContactFooterSection';
 
 const styles: Record<string, SxProps<Theme>> = {
     heroSection: {
@@ -532,6 +533,9 @@ export const JointVenturePage: React.FC = () => {
                     </Box>
                 </Container>
             </Box>
+
+            {/* Contact & Footer Section */}
+            <ContactFooterSection />
         </Box>
     );
 };

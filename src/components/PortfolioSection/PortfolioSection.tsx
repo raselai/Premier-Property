@@ -3,8 +3,8 @@
  * Light background with filter tabs and horizontal project carousel
  */
 
-import React, { useEffect, useRef, useState } from 'react';
-import { Box, Typography, Button, Container } from '@mui/material';
+import React, { useEffect, useRef } from 'react';
+import { Box, Typography, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import { useNavigate } from '@tanstack/react-router';
@@ -12,7 +12,8 @@ import { useNavigate } from '@tanstack/react-router';
 const portfolioStyles: Record<string, SxProps<Theme>> = {
     section: {
         backgroundColor: '#FAFAFA',
-        py: { xs: 6, md: 10 },
+        pt: { xs: 3, md: 5 },
+        pb: { xs: 6, md: 10 },
         px: { xs: 3, md: 8, lg: 10 },
     },
     sectionLabel: {
@@ -190,13 +191,26 @@ const portfolioStyles: Record<string, SxProps<Theme>> = {
     },
     cardTitle: {
         fontFamily: 'Gilroy, sans-serif',
-        fontSize: { xs: '15px', md: '17px' },
-        fontWeight: 700,
-        color: '#2D2D2D',
+        fontSize: { xs: '18px', md: '22px' },
+        fontWeight: 800,
+        color: '#0F5132',
         textTransform: 'uppercase',
         letterSpacing: '0.5px',
         mt: { xs: 2, md: 2.5 },
-        mb: 1,
+        mb: 1.5,
+        lineHeight: 1.3,
+    },
+    cardLocation: {
+        display: 'inline-block',
+        fontSize: { xs: '14px', md: '16px' },
+        fontWeight: 600,
+        color: '#2D2D2D',
+        letterSpacing: '0.3px',
+        textTransform: 'none',
+        backgroundColor: '#F5F5F5',
+        padding: '6px 12px',
+        borderRadius: '6px',
+        mt: 1,
     },
     cardDescription: {
         fontFamily: 'Montserrat, sans-serif',
@@ -295,19 +309,14 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
     ],
 }) => {
     const navigate = useNavigate();
-    const [activeFilter, setActiveFilter] = useState('ALL');
     const cardsRef = useRef<HTMLDivElement>(null);
-
-    const filters = ['ALL', 'HANDOVER', 'ONGOING', 'UPCOMING'];
 
     const handleProjectClick = (projectId: number) => {
         navigate({ to: `/projects/${projectId}` });
     };
 
-    const filteredProjects =
-        activeFilter === 'ALL'
-            ? projects
-            : projects.filter((project) => project.category === activeFilter);
+    // Only show ONGOING projects
+    const filteredProjects = projects.filter((project) => project.category === 'ONGOING');
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -341,65 +350,15 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
         };
     }, []);
 
-    const scrollCarousel = (direction: 'left' | 'right') => {
-        if (cardsRef.current) {
-            const scrollAmount = 400;
-            cardsRef.current.scrollBy({
-                left: direction === 'left' ? -scrollAmount : scrollAmount,
-                behavior: 'smooth',
-            });
-        }
-    };
-
     return (
         <Box sx={portfolioStyles.section}>
             <Container maxWidth='xl'>
-                {/* Section Label */}
-                <Box sx={{ textAlign: 'center' }}>
-                    <Typography sx={portfolioStyles.sectionLabel}>03 - portfolio</Typography>
-                </Box>
-
                 {/* Heading */}
                 <Typography sx={portfolioStyles.heading}>
-                    <Box component='span' sx={portfolioStyles.headingDark}>
-                        PROJECTS{' '}
-                    </Box>
                     <Box component='span' sx={portfolioStyles.headingGold}>
-                        WHERE MODERN
-                    </Box>
-                    <br />
-                    <Box component='span' sx={portfolioStyles.headingGold}>
-                        AESTHETICS{' '}
-                    </Box>
-                    <Box component='span' sx={portfolioStyles.headingDark}>
-                        MEET FUNCTIONALITY
+                        ONGOING PROJECTS
                     </Box>
                 </Typography>
-
-                {/* Filter Row */}
-                <Box sx={portfolioStyles.filterRow}>
-                    {/* Carousel Arrows */}
-                    <Box sx={portfolioStyles.arrowsGroup}>
-                        <Button sx={portfolioStyles.navButton} onClick={() => scrollCarousel('left')}>
-                            ‹
-                        </Button>
-                        <Button sx={portfolioStyles.navButton} onClick={() => scrollCarousel('right')}>
-                            ›
-                        </Button>
-                    </Box>
-
-                    {/* Filter Tabs */}
-                    {filters.map((filter) => (
-                        <Button
-                            key={filter}
-                            sx={portfolioStyles.filterTab}
-                            className={activeFilter === filter ? 'active' : ''}
-                            onClick={() => setActiveFilter(filter)}
-                        >
-                            {filter}
-                        </Button>
-                    ))}
-                </Box>
 
                 {/* Project Cards Carousel */}
                 <Box sx={portfolioStyles.carouselContainer}>
@@ -435,22 +394,12 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
 
                                 <Typography sx={portfolioStyles.cardTitle}>
                                     {project.title}
-                                    {project.location && (
-                                        <Box
-                                            component='span'
-                                            sx={{
-                                                display: 'block',
-                                                fontSize: { xs: '12px', md: '13px' },
-                                                fontWeight: 500,
-                                                color: '#979797',
-                                                mt: 0.5,
-                                                letterSpacing: '0.3px',
-                                            }}
-                                        >
-                                            {project.location}
-                                        </Box>
-                                    )}
                                 </Typography>
+                                {project.location && (
+                                    <Box sx={portfolioStyles.cardLocation}>
+                                        📍 {project.location}
+                                    </Box>
+                                )}
 
                                 <Typography sx={portfolioStyles.cardDescription}>
                                     {project.description}

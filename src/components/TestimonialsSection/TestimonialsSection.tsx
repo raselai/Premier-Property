@@ -11,7 +11,7 @@ import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 const testimonialsStyles: Record<string, SxProps<Theme>> = {
     section: {
         backgroundColor: '#F5F5F5',
-        py: { xs: 8, md: 12 },
+        py: { xs: 5, md: 7 },
         px: { xs: 2, md: 4 },
     },
     sectionLabel: {
@@ -121,20 +121,10 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
     return (
         <Box sx={testimonialsStyles.section}>
             <Container maxWidth='lg'>
-                {/* Section Label */}
-                <Box sx={{ textAlign: 'center' }}>
-                    <Typography sx={testimonialsStyles.sectionLabel}>
-                        04 - testimonials
-                    </Typography>
-                </Box>
-
                 {/* Section Heading */}
                 <Typography sx={testimonialsStyles.heading}>
-                    <Box component='span' sx={testimonialsStyles.headingDark}>
-                        WHAT OUR{' '}
-                    </Box>
                     <Box component='span' sx={testimonialsStyles.headingGold}>
-                        CLIENTS SAY
+                        CLIENTS TESTIMONIALS
                     </Box>
                 </Typography>
 

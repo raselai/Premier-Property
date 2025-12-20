@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { ContactFooterSection } from '@/components/ContactFooterSection';
 import { Box, Typography, Container, Grid } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 import { useNavigate } from '@tanstack/react-router';
@@ -217,6 +218,9 @@ export const ProjectList: React.FC<ProjectListProps> = ({ category, title, subti
                     </Box>
                 )}
             </Container>
+
+            {/* Contact & Footer Section */}
+            <ContactFooterSection />
         </Box>
     );
 };

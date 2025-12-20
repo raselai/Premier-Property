@@ -13,6 +13,7 @@ import {
     Payment as PaymentIcon,
     Gavel as LegalIcon,
 } from '@mui/icons-material';
+import { ContactFooterSection } from '@/components/ContactFooterSection';
 
 const styles: Record<string, SxProps<Theme>> = {
     heroSection: {
@@ -323,6 +324,9 @@ export const FAQPage: React.FC = () => {
                     </Box>
                 </Container>
             </Box>
+
+            {/* Contact & Footer Section */}
+            <ContactFooterSection />
         </Box>
     );
 };

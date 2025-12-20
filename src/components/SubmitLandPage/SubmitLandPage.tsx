@@ -25,6 +25,7 @@ import {
     Email as EmailIcon,
     CheckCircle as CheckCircleIcon,
 } from '@mui/icons-material';
+import { ContactFooterSection } from '@/components/ContactFooterSection';
 
 const styles: Record<string, SxProps<Theme>> = {
     heroSection: {
@@ -634,6 +635,9 @@ export const SubmitLandPage: React.FC = () => {
                     </Grid>
                 </Container>
             </Box>
+
+            {/* Contact & Footer Section */}
+            <ContactFooterSection />
         </Box>
     );
 };

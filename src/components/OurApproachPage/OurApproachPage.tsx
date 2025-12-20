@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { ContactFooterSection } from '@/components/ContactFooterSection';
 import { Box, Container, Typography, Grid, Card, CardContent } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 import {
@@ -402,6 +403,9 @@ export const OurApproachPage: React.FC = () => {
                     </Grid>
                 </Container>
             </Box>
+
+            {/* Contact & Footer Section */}
+            <ContactFooterSection />
         </Box>
     );
 };

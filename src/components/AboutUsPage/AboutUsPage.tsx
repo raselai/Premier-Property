@@ -12,6 +12,7 @@ import {
     Handshake as HandshakeIcon,
     AccountBalance as AccountBalanceIcon,
 } from '@mui/icons-material';
+import { ContactFooterSection } from '@/components/ContactFooterSection';
 
 const styles: Record<string, SxProps<Theme>> = {
     heroSection: {
@@ -319,6 +320,9 @@ export const AboutUsPage: React.FC = () => {
                     </Grid>
                 </Container>
             </Box>
+
+            {/* Contact & Footer Section */}
+            <ContactFooterSection />
         </Box>
     );
 };

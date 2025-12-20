@@ -1,9 +1,9 @@
 /**
- * HeroSection Component (Simple with Background Image)
- * Clean hero section with background image overlay and PREMIER watermark
+ * HeroSection Component (Simple with Background Image Slideshow)
+ * Clean hero section with animated background image slideshow
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material';
 
@@ -14,50 +14,32 @@ interface HeroSectionSimpleProps {
     onButtonClick?: () => void;
 }
 
+const heroImages = [
+    '/Hero_Emage.jpg',
+    '/Hero_Image2.jpg',
+    '/Hero_Image3.jpg',
+];
+
 const heroStyles: Record<string, SxProps<Theme>> = {
     container: {
         position: 'relative',
         minHeight: '100vh',
         width: '100%',
         overflow: 'hidden',
-        backgroundImage: 'url(/Hero_Image.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
         pt: 0,
         mt: 0,
     },
-    watermark: {
+    backgroundSlide: {
         position: 'absolute',
-        top: '15%',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        zIndex: 1,
-        width: '90%',
-        textAlign: 'center',
-        pointerEvents: 'none',
-    },
-    watermarkText: {
-        fontFamily: 'Gilroy, sans-serif',
-        fontWeight: 900,
-        fontSize: { xs: '14vw', sm: '16vw', md: '17vw', lg: '18vw' },
-        color: '#FFFFFF',
-        opacity: 0.6,
-        letterSpacing: '-0.04em',
-        lineHeight: 1,
-        textTransform: 'uppercase',
-        userSelect: 'none',
-        animation: 'slowPopUp 2s ease-out forwards',
-        '@keyframes slowPopUp': {
-            '0%': {
-                opacity: 0,
-                transform: 'scale(0.9) translateY(20px)',
-            },
-            '100%': {
-                opacity: 0.6,
-                transform: 'scale(1) translateY(0)',
-            },
-        },
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        transition: 'opacity 1.5s ease-in-out',
+        zIndex: 0,
     },
     content: {
         position: 'relative',
@@ -159,15 +141,29 @@ export const HeroSectionSimple: React.FC<HeroSectionSimpleProps> = ({
     buttonText = "Let's Talk",
     onButtonClick,
 }) => {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+        }, 5000); // Change image every 5 seconds
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <Box sx={heroStyles.container}>
-            {/* PREMIER Watermark - Behind Content */}
-            <Box sx={heroStyles.watermark}>
-                <Typography sx={heroStyles.watermarkText}>
-                    PREMIER
-                </Typography>
-            </Box>
-
+            {/* Background Image Slideshow */}
+            {heroImages.map((image, index) => (
+                <Box
+                    key={image}
+                    sx={{
+                        ...heroStyles.backgroundSlide,
+                        backgroundImage: `url(${image})`,
+                        opacity: currentImageIndex === index ? 1 : 0,
+                    }}
+                />
+            ))}
             {/* Statistics Cards - Bottom Right on Desktop (Outside Container) */}
             <Box sx={{ ...heroStyles.statsContainer, display: { xs: 'none', md: 'flex' } }}>
                 {/* Years of Experience Card */}
@@ -191,7 +187,7 @@ export const HeroSectionSimple: React.FC<HeroSectionSimpleProps> = ({
                 </Box>
             </Box>
 
-            {/* Main Content - Above Watermark */}
+            {/* Main Content */}
             <Container maxWidth='lg' sx={heroStyles.content}>
                 <Box sx={{ width: '100%' }}>
                     {/* Statistics Cards - Mobile Only (Inside Container) */}
@@ -216,20 +212,6 @@ export const HeroSectionSimple: React.FC<HeroSectionSimpleProps> = ({
                             </Typography>
                         </Box>
                     </Box>
-
-                    <Typography sx={heroStyles.subtitle}>
-                        {subtitle}
-                    </Typography>
-                    {onButtonClick && (
-                        <Button
-                            variant='contained'
-                            size='large'
-                            sx={heroStyles.button}
-                            onClick={onButtonClick}
-                        >
-                            {buttonText}
-                        </Button>
-                    )}
                 </Box>
             </Container>
         </Box>

@@ -9,6 +9,7 @@ import type { SxProps, Theme } from '@mui/material';
 import { PropertyCard } from '@/components/PropertyCard/PropertyCard';
 import type { PropertyStatus } from '@/types/property';
 import { useNavigate } from '@tanstack/react-router';
+import { ContactFooterSection } from '@/components/ContactFooterSection';
 
 const listStyles: Record<string, SxProps<Theme>> = {
     container: {
@@ -287,6 +288,9 @@ export const PropertyList: React.FC<PropertyListProps> = ({
                     </Typography>
                 </Box>
             )}
+
+            {/* Contact & Footer Section */}
+            <ContactFooterSection />
         </Box>
     );
 };
